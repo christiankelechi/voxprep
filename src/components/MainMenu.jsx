@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function MainMenu({ onStart, onTranscriber }) {
+export default function MainMenu({ onStart, onTranscriber, onAligner }) {
   return (
     <div className="container">
       <h1 className="text-2xl text-center mb-4">Global English Assessment Simulator</h1>
@@ -13,12 +13,17 @@ export default function MainMenu({ onStart, onTranscriber }) {
         <p className="italic mt-4">Tips: Speak slowly and clearly. Make sure you are in a quiet place. We recommend using Google Chrome or Microsoft Edge.</p>
       </div>
 
-      <div className="flex justify-center gap-4 mt-8">
-        <button onClick={onStart} style={{ padding: '16px 32px', fontSize: '18px' }}>
-          START ASSESSMENT
-        </button>
-        <button onClick={onTranscriber} style={{ padding: '16px 32px', fontSize: '18px', backgroundColor: '#8b5cf6' }}>
-          FREE TRANSCRIBER
+      <div className="flex flex-col items-center gap-4 mt-8">
+        <div className="flex justify-center gap-4">
+          <button onClick={onStart} style={{ padding: '16px 32px', fontSize: '18px' }}>
+            START ASSESSMENT
+          </button>
+          <button onClick={onTranscriber} style={{ padding: '16px 32px', fontSize: '18px', backgroundColor: '#8b5cf6' }}>
+            FREE TRANSCRIBER
+          </button>
+        </div>
+        <button onClick={onAligner} style={{ padding: '16px 32px', fontSize: '18px', backgroundColor: '#f59e0b', color: '#000', fontWeight: 'bold' }}>
+          ALIGNER EXAM TOOL
         </button>
       </div>
     </div>

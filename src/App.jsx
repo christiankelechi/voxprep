@@ -1,48 +1,48 @@
-import React, { useState, useMemo } from 'react';
+import React, { useMemo } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
 import MainMenu from './components/MainMenu';
 import Part1View from './components/Part1View';
 import Part2View from './components/Part2View';
 import ResultsView from './components/ResultsView';
 import TranscriberView from './components/TranscriberView';
 import AlignerExamView from './components/AlignerExamView';
+import CodingAssessmentView from './components/CodingAssessmentView';
+import AIInterviewView from './components/AIInterviewView';
 import { SpeechService } from './utils/speech';
 
 function App() {
-  const [view, setView] = useState('menu'); // menu, part1, part2, results, transcriber, aligner
-  const [part1Score, setPart1Score] = useState(0);
-  const [part2Score, setPart2Score] = useState(0);
-  
   const speechService = useMemo(() => new SpeechService(), []);
 
-  const handleStart = () => {
-    setView('part1');
-  };
-
-  const handlePart1Finish = (score) => {
-    setPart1Score(score);
-    setView('part2');
-  };
-
-  const handlePart2Finish = (score) => {
-    setPart2Score(score);
-    setView('results');
-  };
-
-  const handleRestart = () => {
-    setPart1Score(0);
-    setPart2Score(0);
-    setView('menu');
-  };
-
   return (
-    <>
-      {view === 'menu' && <MainMenu onStart={handleStart} onTranscriber={() => setView('transcriber')} onAligner={() => setView('aligner')} />}
-      {view === 'part1' && <Part1View onFinish={handlePart1Finish} speechService={speechService} />}
-      {view === 'part2' && <Part2View onFinish={handlePart2Finish} speechService={speechService} />}
-      {view === 'results' && <ResultsView part1Score={part1Score} part2Score={part2Score} onRestart={handleRestart} />}
-      {view === 'transcriber' && <TranscriberView onBack={() => setView('menu')} />}
-      {view === 'aligner' && <AlignerExamView onBack={() => setView('menu')} />}
-    </>
+    <div className="flex flex-col min-h-screen">
+      {/* Global Navbar */}
+      <nav className="sticky top-0 z-50 flex items-center justify-between px-8 py-4 bg-obsidian-light/80 backdrop-blur-md border-b border-border">
+        <Link to="/" className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+          <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center shadow-[0_0_15px_rgba(79,70,229,0.5)]">
+            <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+          </div>
+          OmniAssess
+        </Link>
+        <div className="flex gap-4">
+          <Link to="/" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">Platform</Link>
+          <a href="#" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">Enterprise</a>
+        </div>
+      </nav>
+
+      {/* Main Content Area */}
+      <main className="flex-1 flex flex-col items-center p-8 animate-[fadeIn_0.5s_ease-out]">
+        <Routes>
+          <Route path="/" element={<MainMenu />} />
+          <Route path="/part1" element={<Part1View speechService={speechService} />} />
+          <Route path="/part2" element={<Part2View speechService={speechService} />} />
+          <Route path="/results" element={<ResultsView />} />
+          <Route path="/transcriber" element={<TranscriberView />} />
+          <Route path="/aligner" element={<AlignerExamView />} />
+          <Route path="/coding" element={<CodingAssessmentView />} />
+          <Route path="/ai-interview" element={<AIInterviewView />} />
+        </Routes>
+      </main>
+    </div>
   );
 }
 

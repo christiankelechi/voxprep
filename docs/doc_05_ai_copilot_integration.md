@@ -1,7 +1,7 @@
 # AI Copilot & OpenRouter Integration
 
 ## Introduction
-The OmniAssess platform relies heavily on AI to provide an interactive, premium experience. After experimenting with heavy local models (which crashed browsers), we standardized on **OpenRouter**, an ultra-reliable, free REST API.
+The VoxPrepAI platform relies heavily on AI to provide an interactive, premium experience. After experimenting with heavy local models (which crashed browsers), we standardized on **OpenRouter**, an ultra-reliable, free REST API.
 
 ## 1. The OpenRouter API Architecture
 OpenRouter acts as a router. Instead of connecting directly to Meta or Google, we connect to OpenRouter, which proxies the request to the fastest available open-source model.

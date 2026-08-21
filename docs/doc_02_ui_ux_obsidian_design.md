@@ -1,7 +1,7 @@
 # The "Obsidian" UI/UX Design System
 
 ## Introduction
-OmniAssess was specifically designed to compete globally with top-tier SaaS platforms. To achieve this, we abandoned generic bootstrap designs and implemented a bespoke "Obsidian" minimalist theme inspired by tools like Linear and Vercel.
+VoxPrepAI was specifically designed to compete globally with top-tier SaaS platforms. To achieve this, we abandoned generic bootstrap designs and implemented a bespoke "Obsidian" minimalist theme inspired by tools like Linear and Vercel.
 
 ## 1. Color Palette & The Obsidian Aesthetic
 The defining characteristic of modern premium software is the use of deep, rich dark modes rather than plain black (`#000000`).

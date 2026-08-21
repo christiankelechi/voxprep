@@ -1,7 +1,7 @@
 # Coding Simulator Engine
 
 ## Introduction
-The Coding Assessment environment is the flagship feature of OmniAssess. It had to look and feel exactly like a professional IDE (Integrated Development Environment) like VS Code.
+The Coding Assessment environment is the flagship feature of VoxPrepAI. It had to look and feel exactly like a professional IDE (Integrated Development Environment) like VS Code.
 
 ## 1. The Monaco Editor Integration
 To achieve a world-class typing experience, we integrated `@monaco-editor/react`. 

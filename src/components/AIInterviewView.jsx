@@ -94,7 +94,7 @@ ${cvText.substring(0, 3000)}`;
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
           'HTTP-Referer': window.location.href,
-          'X-Title': 'OmniAssess'
+          'X-Title': 'VoxPrepAI'
         },
         body: JSON.stringify({
           model: 'openrouter/free',
@@ -146,7 +146,7 @@ ${cvText.substring(0, 3000)}`;
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
           'HTTP-Referer': window.location.href,
-          'X-Title': 'OmniAssess'
+          'X-Title': 'VoxPrepAI'
         },
         body: JSON.stringify({
           model: 'openrouter/free',
@@ -198,7 +198,7 @@ ${chatLog.map(m => m.role + ': ' + m.text).join('\\n')}
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
           'HTTP-Referer': window.location.href,
-          'X-Title': 'OmniAssess'
+          'X-Title': 'VoxPrepAI'
         },
         body: JSON.stringify({
           model: 'openrouter/free',
@@ -291,7 +291,7 @@ ${chatLog.map(m => m.role + ': ' + m.text).join('\\n')}
                 <div className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-obsidian"></div>
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-100 text-sm">OmniAssess Recruiter</h3>
+                <h3 className="font-semibold text-zinc-100 text-sm">VoxPrepAI Recruiter</h3>
                 <p className="text-xs text-zinc-500">Live Session Active</p>
               </div>
             </div>

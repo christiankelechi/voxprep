@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 export default function MainMenu() {
   return (
     <div className="w-full max-w-6xl mx-auto space-y-16 py-12 animate-[slideUp_0.6s_ease-out]">
-      <div className="text-center space-y-6">
+      <div className="text-center space-y-6 flex flex-col items-center">
+        <img src="/logo.png" alt="VoxPrepAI Logo" className="w-24 h-24 object-contain filter drop-shadow-[0_0_20px_rgba(79,70,229,0.5)] mb-2" />
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-sm font-medium mb-4">
           <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
-          OmniAssess Platform v2.0
+          VoxPrepAI Platform v2.0
         </div>
         <h1 className="text-6xl md:text-7xl font-bold text-white tracking-tighter">
           Evaluate with <span className="text-gradient-accent">precision.</span>

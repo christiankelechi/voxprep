@@ -107,7 +107,7 @@ Provide a helpful, concise hint without writing the entire solution for them. Be
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
           'HTTP-Referer': window.location.href,
-          'X-Title': 'OmniAssess'
+          'X-Title': 'VoxPrepAI'
         },
         body: JSON.stringify({
           model: 'openrouter/free',
@@ -147,7 +147,7 @@ The user has explicitly requested the full solution. Provide the optimal Python 
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
           'HTTP-Referer': window.location.href,
-          'X-Title': 'OmniAssess'
+          'X-Title': 'VoxPrepAI'
         },
         body: JSON.stringify({
           model: 'openrouter/free',

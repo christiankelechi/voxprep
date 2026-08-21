@@ -3,7 +3,7 @@
 ## Introduction
 When a user uploads their CV to start an interview, the standard web approach is to upload the file to an AWS S3 bucket, parse it on a backend Python server, and send the text back. This violates user privacy and costs server money. 
 
-OmniAssess parses PDFs 100% locally in the browser using `pdfjs-dist`.
+VoxPrepAI parses PDFs 100% locally in the browser using `pdfjs-dist`.
 
 ## 1. The PDF.js Architecture
 PDFs are not text files; they are complex binary blobs of drawing commands. Mozilla's `pdfjs-dist` is the industry standard for decoding these binary files in JavaScript.

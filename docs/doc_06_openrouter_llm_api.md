@@ -4,11 +4,11 @@
 # API Networking & OpenRouter Implementation (Doc 06)
 
 ## Introduction
-The way a modern web application communicates with external servers dictates its speed and reliability. OmniAssess uses standard `fetch` API calls wrapped in robust asynchronous `try/catch` blocks.
+The way a modern web application communicates with external servers dictates its speed and reliability. VoxPrepAI uses standard `fetch` API calls wrapped in robust asynchronous `try/catch` blocks.
 
 ## 1. The Fetch Protocol
 We use native browser `fetch` instead of libraries like Axios.
-- **Headers:** OpenRouter requires specific headers. We pass `Authorization: Bearer KEY` to authenticate. We also pass `HTTP-Referer` and `X-Title` to identify OmniAssess to their servers.
+- **Headers:** OpenRouter requires specific headers. We pass `Authorization: Bearer KEY` to authenticate. We also pass `HTTP-Referer` and `X-Title` to identify VoxPrepAI to their servers.
 - **JSON Parsing:** The `await response.json()` command pauses the Javascript execution thread until the massive JSON payload is downloaded and converted into a native JS object.
 
 ## 2. Handling API Failures

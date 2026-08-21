@@ -1,7 +1,7 @@
 # Deployment & Future Scaling
 
 ## Introduction
-OmniAssess is currently structured as a fully functional frontend application. It relies on zero backend servers, as the logic is pushed entirely to the client (WebAssembly, Native APIs) and third-party SaaS (OpenRouter). 
+VoxPrepAI is currently structured as a fully functional frontend application. It relies on zero backend servers, as the logic is pushed entirely to the client (WebAssembly, Native APIs) and third-party SaaS (OpenRouter). 
 
 ## 1. Preparing for Production Deployment
 To take this platform live to the world, it must be deployed to a CDN (Content Delivery Network).
@@ -19,4 +19,4 @@ While the current architecture is perfect for a limitless, anonymous tool, a tru
 - **Backend APIs:** Once you have a database, you would build a lightweight backend (e.g., Node.js/Express or Python FastAPI) to handle secure database writes. The frontend (`web-simulator`) would fetch data from this backend instead of relying purely on local state.
 
 ## 4. Conclusion
-OmniAssess is built on the most aggressive, modern architectural principles available in web development today. By strictly separating UI logic, utilizing client-side WebAssembly, and leveraging free LLM routers, the platform achieves infinite scalability with effectively zero running costs. It is globally competitive and ready for mass distribution.
+VoxPrepAI is built on the most aggressive, modern architectural principles available in web development today. By strictly separating UI logic, utilizing client-side WebAssembly, and leveraging free LLM routers, the platform achieves infinite scalability with effectively zero running costs. It is globally competitive and ready for mass distribution.

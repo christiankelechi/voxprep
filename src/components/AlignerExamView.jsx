@@ -8,8 +8,11 @@ export default function AlignerExamView({ onBack }) {
   const [isProcessing, setIsProcessing] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
+  const [isRecording, setIsRecording] = useState(false);
   
   const fileInputRef = useRef(null);
+  const mediaRecorderRef = useRef(null);
+  const audioChunksRef = useRef([]);
 
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -34,23 +37,64 @@ export default function AlignerExamView({ onBack }) {
 
   const determineMimeType = (file) => {
     if (file.type) return file.type;
-    const extension = file.name.split('.').pop().toLowerCase();
+    const extension = file.name?.split('.').pop().toLowerCase();
     if (extension === 'wav') return 'audio/wav';
     if (extension === 'mp3') return 'audio/mp3';
     if (extension === 'webm') return 'audio/webm';
     return 'audio/wav'; // fallback
   };
 
-  const handleProcess = async () => {
-    if (!file) return;
+  const toggleRecording = async () => {
+    if (isRecording) {
+      if (mediaRecorderRef.current) {
+        mediaRecorderRef.current.stop();
+        setIsRecording(false);
+      }
+    } else {
+      setError(null);
+      setResult(null);
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorderRef.current = new MediaRecorder(stream);
+        audioChunksRef.current = [];
+        
+        mediaRecorderRef.current.ondataavailable = (e) => {
+          if (e.data.size > 0) {
+            audioChunksRef.current.push(e.data);
+          }
+        };
+        
+        mediaRecorderRef.current.onstop = async () => {
+          stream.getTracks().forEach(track => track.stop());
+          if (audioChunksRef.current.length === 0) return;
+          
+          const blob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
+          const recordedFile = new File([blob], "recording.webm", { type: 'audio/webm' });
+          setFile(recordedFile);
+          
+          processAudio(recordedFile);
+        };
+        
+        mediaRecorderRef.current.start();
+        setIsRecording(true);
+      } catch (e) {
+        setError("Microphone access denied or error: " + e.message);
+      }
+    }
+  };
+
+  const handleProcess = () => processAudio(file);
+
+  const processAudio = async (targetFile) => {
+    if (!targetFile) return;
     
     setIsProcessing(true);
     setError(null);
     setResult(null);
 
     try {
-      const base64Audio = await fileToBase64(file);
-      const mimeType = determineMimeType(file);
+      const base64Audio = await fileToBase64(targetFile);
+      const mimeType = determineMimeType(targetFile);
 
       const requestBody = {
         contents: [
@@ -142,14 +186,29 @@ export default function AlignerExamView({ onBack }) {
             hover:file:bg-purple-600"
         />
 
-        <button 
-          onClick={handleProcess} 
-          disabled={!file || isProcessing}
-          style={{ padding: '10px 24px', backgroundColor: isProcessing ? '#555' : '#10b981', color: '#fff' }}
-          className={isProcessing ? "pulse" : ""}
-        >
-          {isProcessing ? "Analyzing Audio with Gemini 1.5 Pro..." : "Process Audio"}
-        </button>
+        <div className="flex gap-4">
+          <button 
+            onClick={toggleRecording} 
+            disabled={isProcessing}
+            style={{ padding: '10px 24px', backgroundColor: isRecording ? '#ef4444' : '#3b82f6', color: '#fff' }}
+            className={isRecording ? "pulse" : ""}
+          >
+            {isRecording ? "Stop Recording" : "Start Recording"}
+          </button>
+
+          <button 
+            onClick={handleProcess} 
+            disabled={!file || isProcessing || isRecording}
+            style={{ padding: '10px 24px', backgroundColor: (isProcessing || isRecording) ? '#555' : '#10b981', color: '#fff' }}
+            className={isProcessing ? "pulse" : ""}
+          >
+            {isProcessing ? "Analyzing Audio with Gemini 1.5 Pro..." : "Process Audio"}
+          </button>
+        </div>
+        
+        {file && !isRecording && !isProcessing && (
+          <p className="mt-3 text-sm text-green-400">Audio ready: {file.name}</p>
+        )}
       </div>
 
       {error && (

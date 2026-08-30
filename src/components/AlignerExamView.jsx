@@ -74,70 +74,60 @@ export default function AlignerExamView({ onBack }) {
     setResult(null);
 
     try {
-      if (!GROQ_API_KEY) {
-        throw new Error("Groq API Key is missing. Please add VITE_GROQ_API_KEY to your .env file.");
+      if (!API_KEY) {
+        throw new Error("Gemini API Key is missing. Please add VITE_GEMINI_API_KEY to your .env file.");
       }
 
-      // ---------------------------------------------------------
-      // STAGE 1: Audio to Text via Groq Whisper API
-      // ---------------------------------------------------------
-      const formData = new FormData();
-      formData.append('file', targetFile);
-      formData.append('model', 'whisper-large-v3');
-      formData.append('temperature', '0');
-      formData.append('prompt', '[fp], [hn], [laughter], [bg], [artifact], <s1>, <s2>, <ol>, </ol>, <ct>, (()), {{}}, <ga>, <na>, <ns>, <nt>, <sc>');
-
-      const sttResponse = await fetch('https://api.groq.com/openai/v1/audio/transcriptions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${GROQ_API_KEY}`
-        },
-        body: formData
+      // Convert file to base64 for Gemini
+      const getBase64 = (file) => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          let mimeType = file.type || 'audio/webm';
+          if (!mimeType.includes('audio')) {
+             mimeType = 'audio/mp3'; // fallback
+          }
+          const base64Data = reader.result.split(',')[1];
+          resolve({ mimeType, data: base64Data });
+        };
+        reader.onerror = reject;
       });
 
-      if (!sttResponse.ok) {
-        const err = await sttResponse.json();
-        throw new Error(err.error?.message || "Speech-to-Text failed");
-      }
+      const audioInlineData = await getBase64(targetFile);
 
-      const sttData = await sttResponse.json();
-      const transcript = sttData.text;
-
-      if (!transcript || transcript.trim().length === 0) {
-        throw new Error("No speech detected in audio.");
-      }
-
-      // ---------------------------------------------------------
-      // STAGE 2: Text to JSON Analysis via Groq API
-      // ---------------------------------------------------------
-      if (!GROQ_API_KEY) throw new Error("Groq API Key is missing.");
-
-      const llmResponse = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${GROQ_API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          model: 'openai/gpt-oss-120b',
-          messages: [
-            { role: 'system', content: ERMIS_INSTRUCTIONS },
-            { role: 'user', content: `Please align, analyze, and format the following audio transcript strictly as the requested JSON structure:\n\n${transcript}` }
-          ],
+      // Call Gemini 1.5 Flash which natively supports audio + text instructions
+      const payload = {
+        system_instruction: { parts: [{ text: ERMIS_INSTRUCTIONS }] },
+        contents: [
+          {
+            role: 'user',
+            parts: [
+              { text: "Please align, analyze, and format the attached audio strictly as the requested JSON structure. Carefully transcribe the audio, paying close attention to tags like [hn], [fp], [laughter], etc., as defined in the instructions." },
+              { inline_data: { mime_type: audioInlineData.mimeType, data: audioInlineData.data } }
+            ]
+          }
+        ],
+        generationConfig: {
           temperature: 0,
-          response_format: { type: "json_object" }
-        })
+          responseMimeType: "application/json"
+        }
+      };
+
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${API_KEY}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       });
 
-      if (!llmResponse.ok) {
-        const err = await llmResponse.json();
-        throw new Error(err.error?.message || "LLM Analysis failed");
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.error?.message || "Gemini API failed");
       }
 
-      const llmData = await llmResponse.json();
-      let generatedText = llmData.choices?.[0]?.message?.content;
+      const responseData = await response.json();
+      const generatedText = responseData.candidates?.[0]?.content?.parts?.[0]?.text;
       
-      if (!generatedText) throw new Error("No response generated from LLM");
+      if (!generatedText) throw new Error("No response generated from Gemini");
       
       const parsedResult = JSON.parse(generatedText);
       setResult(parsedResult);

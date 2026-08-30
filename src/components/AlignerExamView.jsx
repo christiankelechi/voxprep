@@ -95,7 +95,7 @@ export default function AlignerExamView({ onBack }) {
 
       const audioInlineData = await getBase64(targetFile);
 
-      // Call Gemini 2.0 Flash (since 3.1 and 3.6 do not exist in the API)
+      // Call Gemini 3.6 Flash for complex audio + text instructions
       const payload = {
         system_instruction: { parts: [{ text: "CRITICAL: YOU MUST FOLLOW EVERY SINGLE RULE IN THE ERMIS INSTRUCTIONS WITH 100% ACCURACY AND PRECISION. DO NOT MISS ANY SPECIAL SYMBOLS, SPEAKER TAGS (<s1>, <s2>), OR OVERLAPPING SPEECH (<ol>). " + ERMIS_INSTRUCTIONS }] },
         contents: [
@@ -113,7 +113,7 @@ export default function AlignerExamView({ onBack }) {
         }
       };
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`, {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${API_KEY}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

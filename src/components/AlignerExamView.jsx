@@ -108,8 +108,10 @@ export default function AlignerExamView({ onBack }) {
       }
 
       // ---------------------------------------------------------
-      // STAGE 2: Text to JSON Analysis via Groq Llama 3 API
+      // STAGE 2: Text to JSON Analysis via Groq API
       // ---------------------------------------------------------
+      if (!GROQ_API_KEY) throw new Error("Groq API Key is missing.");
+
       const llmResponse = await fetch('https://api.groq.com/openai/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -117,7 +119,7 @@ export default function AlignerExamView({ onBack }) {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: 'llama-3.1-8b-instant',
+          model: 'openai/gpt-oss-120b',
           messages: [
             { role: 'system', content: ERMIS_INSTRUCTIONS },
             { role: 'user', content: `Please align, analyze, and format the following audio transcript strictly as the requested JSON structure:\n\n${transcript}` }

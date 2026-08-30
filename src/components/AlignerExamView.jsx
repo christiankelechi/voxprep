@@ -117,7 +117,7 @@ export default function AlignerExamView({ onBack }) {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: 'llama-3.3-70b-versatile',
+          model: 'llama-3.1-8b-instant',
           messages: [
             { role: 'system', content: ERMIS_INSTRUCTIONS },
             { role: 'user', content: `Please align, analyze, and format the following audio transcript strictly as the requested JSON structure:\n\n${transcript}` }

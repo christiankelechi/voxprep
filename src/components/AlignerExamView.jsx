@@ -95,14 +95,14 @@ export default function AlignerExamView({ onBack }) {
 
       const audioInlineData = await getBase64(targetFile);
 
-      // Call Gemini 1.5 Flash which natively supports audio + text instructions
+      // Call Gemini 1.5 Pro which provides highest accuracy for complex audio + text instructions
       const payload = {
-        system_instruction: { parts: [{ text: ERMIS_INSTRUCTIONS }] },
+        system_instruction: { parts: [{ text: "CRITICAL: YOU MUST FOLLOW EVERY SINGLE RULE IN THE ERMIS INSTRUCTIONS WITH 100% ACCURACY AND PRECISION. DO NOT MISS ANY SPECIAL SYMBOLS, SPEAKER TAGS (<s1>, <s2>), OR OVERLAPPING SPEECH (<ol>). " + ERMIS_INSTRUCTIONS }] },
         contents: [
           {
             role: 'user',
             parts: [
-              { text: "Please align, analyze, and format the attached audio strictly as the requested JSON structure. Carefully transcribe the audio, paying close attention to tags like [hn], [fp], [laughter], etc., as defined in the instructions." },
+              { text: "You MUST achieve 100% accuracy and precision. Capture EVERY SINGLE DETAIL in the audio. You must rigorously apply ALL rules in the Ermis instructions. Pay extreme attention to identifying multiple speakers using <s1> and <s2>, and properly tag overlapping speech with <ol>. Do not miss any special symbols, filled pauses [fp], non-lexical vocal sounds [hn], [laughter], or background speech [bg]. Transcribe the audio exactly as spoken, formatting strictly as the requested JSON structure without hallucinating." },
               { inline_data: { mime_type: audioInlineData.mimeType, data: audioInlineData.data } }
             ]
           }
@@ -113,7 +113,7 @@ export default function AlignerExamView({ onBack }) {
         }
       };
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${API_KEY}`, {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${API_KEY}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -179,7 +179,7 @@ export default function AlignerExamView({ onBack }) {
             style={{ padding: '10px 24px', backgroundColor: (isProcessing || isRecording) ? '#555' : '#10b981', color: '#fff' }}
             className={isProcessing ? "pulse" : ""}
           >
-            {isProcessing ? "Analyzing Audio with Groq..." : "Process Audio"}
+            {isProcessing ? "Analyzing Audio with Gemini..." : "Process Audio"}
           </button>
         </div>
         

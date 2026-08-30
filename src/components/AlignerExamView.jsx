@@ -22,27 +22,7 @@ export default function AlignerExamView({ onBack }) {
     }
   };
 
-  const fileToBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        // Remove the data URI prefix (e.g., "data:audio/wav;base64,")
-        const base64String = reader.result.split(',')[1];
-        resolve(base64String);
-      };
-      reader.onerror = (error) => reject(error);
-    });
-  };
 
-  const determineMimeType = (file) => {
-    if (file.type) return file.type;
-    const extension = file.name?.split('.').pop().toLowerCase();
-    if (extension === 'wav') return 'audio/wav';
-    if (extension === 'mp3') return 'audio/mp3';
-    if (extension === 'webm') return 'audio/webm';
-    return 'audio/wav'; // fallback
-  };
 
   const toggleRecording = async () => {
     if (isRecording) {
@@ -93,64 +73,68 @@ export default function AlignerExamView({ onBack }) {
     setResult(null);
 
     try {
-      const base64Audio = await fileToBase64(targetFile);
-      const mimeType = determineMimeType(targetFile);
-
-      const requestBody = {
-        contents: [
-          {
-            parts: [
-              { text: ERMIS_INSTRUCTIONS },
-              {
-                inline_data: {
-                  mime_type: mimeType,
-                  data: base64Audio
-                }
-              }
-            ]
-          }
-        ],
-        generationConfig: {
-          temperature: 0.2,
-          response_mime_type: "application/json"
-        }
-      };
-
-      let response;
-      let retries = 3;
-      let delay = 2000;
-      
-      while (retries > 0) {
-        response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${API_KEY}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(requestBody)
-        });
-
-        if (response.ok) {
-          break; // Success!
-        }
-        
-        const errData = await response.json();
-        
-        // If it's a 503 (high demand) or 429 (rate limit) and we have retries left
-        if ((response.status === 503 || response.status === 429) && retries > 1) {
-          retries--;
-          setIsProcessing(true);
-          setError(`Google Servers busy. Retrying in ${delay/1000}s... (${retries} attempts left)`);
-          await new Promise(resolve => setTimeout(resolve, delay));
-          delay *= 2; // Exponential backoff
-        } else {
-          throw new Error(errData.error?.message || 'API request failed');
-        }
+      if (!GROQ_API_KEY) {
+        throw new Error("Groq API Key is missing. Please add VITE_GROQ_API_KEY to your .env file.");
       }
 
-      const data = await response.json();
+      // ---------------------------------------------------------
+      // STAGE 1: Audio to Text via Groq Whisper API
+      // ---------------------------------------------------------
+      const formData = new FormData();
+      formData.append('file', targetFile);
+      formData.append('model', 'whisper-large-v3');
+      formData.append('temperature', '0');
+      formData.append('prompt', '[fp], [hn], [laughter], [bg], [artifact], <s1>, <s2>, <ol>, </ol>, <ct>, (()), {{}}, <ga>, <na>, <ns>, <nt>, <sc>');
+
+      const sttResponse = await fetch('https://api.groq.com/openai/v1/audio/transcriptions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${GROQ_API_KEY}`
+        },
+        body: formData
+      });
+
+      if (!sttResponse.ok) {
+        const err = await sttResponse.json();
+        throw new Error(err.error?.message || "Speech-to-Text failed");
+      }
+
+      const sttData = await sttResponse.json();
+      const transcript = sttData.text;
+
+      if (!transcript || transcript.trim().length === 0) {
+        throw new Error("No speech detected in audio.");
+      }
+
+      // ---------------------------------------------------------
+      // STAGE 2: Text to JSON Analysis via Groq Llama 3 API
+      // ---------------------------------------------------------
+      const llmResponse = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${GROQ_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: 'llama3-70b-8192',
+          messages: [
+            { role: 'system', content: ERMIS_INSTRUCTIONS },
+            { role: 'user', content: `Please align, analyze, and format the following audio transcript strictly as the requested JSON structure:\n\n${transcript}` }
+          ],
+          temperature: 0,
+          response_format: { type: "json_object" }
+        })
+      });
+
+      if (!llmResponse.ok) {
+        const err = await llmResponse.json();
+        throw new Error(err.error?.message || "LLM Analysis failed");
+      }
+
+      const llmData = await llmResponse.json();
+      let generatedText = llmData.choices?.[0]?.message?.content;
       
-      let generatedText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-      if (!generatedText) throw new Error("No response generated");
+      if (!generatedText) throw new Error("No response generated from LLM");
       
       const parsedResult = JSON.parse(generatedText);
       setResult(parsedResult);
@@ -202,7 +186,7 @@ export default function AlignerExamView({ onBack }) {
             style={{ padding: '10px 24px', backgroundColor: (isProcessing || isRecording) ? '#555' : '#10b981', color: '#fff' }}
             className={isProcessing ? "pulse" : ""}
           >
-            {isProcessing ? "Analyzing Audio with Gemini 1.5 Pro..." : "Process Audio"}
+            {isProcessing ? "Analyzing Audio with Groq..." : "Process Audio"}
           </button>
         </div>
         

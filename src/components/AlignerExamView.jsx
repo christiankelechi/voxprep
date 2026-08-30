@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { ERMIS_INSTRUCTIONS } from '../data/ermisInstructions';
 
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
 
 export default function AlignerExamView({ onBack }) {
   const [file, setFile] = useState(null);

@@ -9,6 +9,15 @@ You must return your output in JSON format with exactly the following keys:
 
 Listen carefully to the audio and apply these rules rigorously. Do not hallucinate words. If you can't hear anything clearly, use (()). Return ONLY valid JSON, no markdown blocks around it.
 
+CRITICAL INSTRUCTION REGARDING SPECIAL CHARACTERS AND TAGS:
+You MUST perfectly preserve and output all special syntax, tags, and markers exactly as defined in the rules. The system relies on you keeping these intact. This includes:
+- Square brackets for noises: [laughter], [hn], [fp], [bg], [artifact]
+- Angle brackets for speakers and overlapping speech: <s1>, <s2>, <ol>, </ol>, <ct>
+- Angle brackets for specific audio states: <ga>, <na>, <ns>, <nt>, <sc>
+- Double parentheses for unintelligible speech: (()), ((guessed words))
+- Double curly braces for mis-spoken words: {{mis-spoken}}
+DO NOT strip, escape, modify, or ignore these characters under any circumstances. Ensure they appear in the final JSON exactly as written here.
+
 HERE ARE THE FULL ERMIS TRANSCRIPTION INSTRUCTIONS YOU MUST OBEY:
 
 Transcription Guidelines

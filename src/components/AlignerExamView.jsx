@@ -10,6 +10,7 @@ export default function AlignerExamView({ onBack }) {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
+  const [modelEngine, setModelEngine] = useState('v1');
   
   const fileInputRef = useRef(null);
   const mediaRecorderRef = useRef(null);
@@ -67,6 +68,45 @@ export default function AlignerExamView({ onBack }) {
   const handleProcess = () => processAudio(file);
 
   const processAudio = async (targetFile) => {
+    if (modelEngine === 'v1') {
+      return processAudioV1(targetFile);
+    } else {
+      return processAudioV2(targetFile);
+    }
+  };
+
+  const processAudioV2 = async (targetFile) => {
+    if (!targetFile) return;
+    
+    setIsProcessing(true);
+    setError(null);
+    setResult(null);
+
+    try {
+      const formData = new FormData();
+      formData.append('file', targetFile);
+
+      // Attempt to contact local PyQt6 or Python FastAPI backend on port 8000
+      const response = await fetch(`http://localhost:8000/process-v2`, {
+        method: 'POST',
+        body: formData
+      });
+
+      if (!response.ok) {
+        throw new Error("Local model V2 backend failed or is not running on port 8000");
+      }
+
+      const responseData = await response.json();
+      setResult(responseData);
+    } catch (err) {
+      console.error(err);
+      setError(`V2 Processing failed: ${err.message}. Make sure the local model server is running!`);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const processAudioV1 = async (targetFile) => {
     if (!targetFile) return;
     
     setIsProcessing(true);
@@ -147,6 +187,21 @@ export default function AlignerExamView({ onBack }) {
       </div>
 
       <div className="mb-6 p-4 rounded bg-dark border border-gray-700">
+        <div className="flex gap-4 mb-4 pb-4 border-b border-gray-700">
+          <button 
+            onClick={() => setModelEngine('v1')}
+            style={{ padding: '8px 16px', borderRadius: '4px', backgroundColor: modelEngine === 'v1' ? '#3b82f6' : '#333', color: '#fff', border: '1px solid #3b82f6' }}
+          >
+            V1: Gemini API (Cloud)
+          </button>
+          <button 
+            onClick={() => setModelEngine('v2')}
+            style={{ padding: '8px 16px', borderRadius: '4px', backgroundColor: modelEngine === 'v2' ? '#10b981' : '#333', color: '#fff', border: '1px solid #10b981' }}
+          >
+            V2: Local Trained Model (PyQt6/Edge)
+          </button>
+        </div>
+
         <h3 className="text-lg mb-2">Upload Audio File</h3>
         <p className="text-sm text-gray-400 mb-4">Upload a .wav, .mp3, or .webm file to transcribe it according to the exact Ermis instructions.</p>
         
@@ -176,10 +231,10 @@ export default function AlignerExamView({ onBack }) {
           <button 
             onClick={handleProcess} 
             disabled={!file || isProcessing || isRecording}
-            style={{ padding: '10px 24px', backgroundColor: (isProcessing || isRecording) ? '#555' : '#10b981', color: '#fff' }}
+            style={{ padding: '10px 24px', backgroundColor: (isProcessing || isRecording) ? '#555' : (modelEngine === 'v1' ? '#10b981' : '#8b5cf6'), color: '#fff' }}
             className={isProcessing ? "pulse" : ""}
           >
-            {isProcessing ? "Analyzing Audio with Gemini..." : "Process Audio"}
+            {isProcessing ? `Analyzing Audio with ${modelEngine === 'v1' ? 'Gemini' : 'Local Model'}...` : `Process Audio (${modelEngine === 'v1' ? 'V1' : 'V2'})`}
           </button>
         </div>
         

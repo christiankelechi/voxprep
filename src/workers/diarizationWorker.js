@@ -1,4 +1,4 @@
-import { AutoFeatureExtractor, AutoModel, env } from '@xenova/transformers';
+import { AutoProcessor, AutoModel, env } from '@xenova/transformers';
 import { kmeans } from 'ml-kmeans';
 
 // Disable local models since we will fetch from huggingface
@@ -11,7 +11,7 @@ class DiarizationPipeline {
     
     static async getInstance(progress_callback) {
         if (this.processor === null) {
-            this.processor = await AutoFeatureExtractor.from_pretrained('Xenova/wavlm-base-plus-sv', { progress_callback });
+            this.processor = await AutoProcessor.from_pretrained('Xenova/wavlm-base-plus-sv', { progress_callback });
         }
         if (this.model === null) {
             this.model = await AutoModel.from_pretrained('Xenova/wavlm-base-plus-sv', {

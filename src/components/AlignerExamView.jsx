@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ERMIS_INSTRUCTIONS } from '../data/ermisInstructions';
+import { useTranscriber } from '../hooks/useTranscriber';
 
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
@@ -11,6 +12,8 @@ export default function AlignerExamView({ onBack }) {
   const [error, setError] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
   const [modelEngine, setModelEngine] = useState('v1');
+  
+  const transcriber = useTranscriber();
   
   const fileInputRef = useRef(null);
   const mediaRecorderRef = useRef(null);
@@ -83,28 +86,55 @@ export default function AlignerExamView({ onBack }) {
     setResult(null);
 
     try {
-      const formData = new FormData();
-      formData.append('file', targetFile);
-
-      // Attempt to contact local PyQt6 or Python FastAPI backend on port 8000
-      const response = await fetch(`http://localhost:8000/process-v2`, {
-        method: 'POST',
-        body: formData
-      });
-
-      if (!response.ok) {
-        throw new Error("Local model V2 backend failed or is not running on port 8000");
+      // Web Workers cannot decode MP3/WebM because they lack AudioContext.
+      // So we must decode the audio on the main thread to 16kHz Float32Array first.
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
+      const arrayBuffer = await targetFile.arrayBuffer();
+      const audioBuffer = await audioCtx.decodeAudioData(arrayBuffer);
+      let float32Data = audioBuffer.getChannelData(0); // Get mono channel
+      
+      // PEAK NORMALIZATION: Boost faint audio so the model can hear quiet whispers and fillers (ums).
+      let maxAmplitude = 0;
+      for (let i = 0; i < float32Data.length; i++) {
+        if (Math.abs(float32Data[i]) > maxAmplitude) {
+            maxAmplitude = Math.abs(float32Data[i]);
+        }
+      }
+      if (maxAmplitude > 0 && maxAmplitude < 1.0) {
+         const boostFactor = 0.95 / maxAmplitude;
+         // Create a new boosted array
+         const boostedData = new Float32Array(float32Data.length);
+         for (let i = 0; i < float32Data.length; i++) {
+             boostedData[i] = float32Data[i] * boostFactor;
+         }
+         float32Data = boostedData;
       }
 
-      const responseData = await response.json();
-      setResult(responseData);
+      transcriber.transcribe(float32Data);
     } catch (err) {
       console.error(err);
-      setError(`V2 Processing failed: ${err.message}. Make sure the local model server is running!`);
-    } finally {
+      setError(`V2 Processing failed: ${err.message}`);
       setIsProcessing(false);
     }
   };
+
+  // Listen for transcriber results
+  useEffect(() => {
+    if (modelEngine === 'v2') {
+      if (transcriber.transcript) {
+        setResult({
+          save_state: 'Good',
+          spoken_form: transcriber.transcript,
+          written_form: transcriber.rawTranscript,
+          discard_reasons: [],
+          speaker_metadata: [
+            { speaker: "<s1>", gender: "Unknown", nativity: "Unknown" }
+          ]
+        });
+        setIsProcessing(false);
+      }
+    }
+  }, [transcriber.transcript, transcriber.rawTranscript, modelEngine]);
 
   const processAudioV1 = async (targetFile) => {
     if (!targetFile) return;
@@ -198,9 +228,16 @@ export default function AlignerExamView({ onBack }) {
             onClick={() => setModelEngine('v2')}
             style={{ padding: '8px 16px', borderRadius: '4px', backgroundColor: modelEngine === 'v2' ? '#10b981' : '#333', color: '#fff', border: '1px solid #10b981' }}
           >
-            V2: Local Trained Model (PyQt6/Edge)
+            V2: TensorFlow Web (100% Free)
           </button>
         </div>
+
+        {modelEngine === 'v2' && transcriber.isBusy && (
+           <div className="mb-4">
+             <p className="text-sm text-yellow-400 animate-pulse">Running 3-Brain Pipeline locally in your browser...</p>
+             <p className="text-xs text-gray-400">{transcriber.currentTask}</p>
+           </div>
+        )}
 
         <h3 className="text-lg mb-2">Upload Audio File</h3>
         <p className="text-sm text-gray-400 mb-4">Upload a .wav, .mp3, or .webm file to transcribe it according to the exact Ermis instructions.</p>

@@ -23,18 +23,22 @@ export function useTranscriber() {
             workerDiarizer.current = new Worker(new URL('../workers/diarizationWorker.js', import.meta.url), { type: 'module' });
             workerAi.current = new Worker(new URL('../workers/aiWorker.js', import.meta.url), { type: 'module' });
 
-            const handleProgress = (e) => {
+            const handleMessage = (workerName, e) => {
                 if (e.data.status === 'progress') {
                     setProgressItems(prev => {
                         const map = new Map(prev.map(i => [i.file, i]));
                         map.set(e.data.data.file, e.data.data);
                         return Array.from(map.values());
                     });
+                } else if (e.data.status === 'error') {
+                    console.error(`${workerName} Error:`, e.data.error);
+                    setCurrentTask(`Error in ${workerName}: ${e.data.error}`);
+                    setIsBusy(false);
                 }
             };
 
             workerTranscriber.current.addEventListener('message', (e) => {
-                handleProgress(e);
+                handleMessage('Transcriber', e);
                 if (e.data.status === 'complete') {
                     resultsRef.current.transcription = e.data;
                     checkMerge();
@@ -42,7 +46,7 @@ export function useTranscriber() {
             });
 
             workerDiarizer.current.addEventListener('message', (e) => {
-                handleProgress(e);
+                handleMessage('Diarizer', e);
                 if (e.data.status === 'complete') {
                     resultsRef.current.diarization = e.data;
                     checkMerge();
@@ -50,7 +54,7 @@ export function useTranscriber() {
             });
 
             workerAi.current.addEventListener('message', (e) => {
-                handleProgress(e);
+                handleMessage('Semantic AI', e);
                 if (e.data.status === 'complete') {
                     setTranscript(e.data.output);
                     setIsBusy(false);

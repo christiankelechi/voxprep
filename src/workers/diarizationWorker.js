@@ -71,11 +71,24 @@ self.addEventListener('message', async (e) => {
             const inputs = await processor(chunk);
             const output = await model(inputs);
             
-            // Extract the embedding by taking the mean of the sequence (mean pooling)
-            // output.last_hidden_state is a tensor of shape [1, seq_len, 768]
-            const hidden = output.last_hidden_state;
-            const seqLen = hidden.dims[1];
-            const hiddenSize = hidden.dims[2];
+            // Safely extract the hidden state tensor, no matter what it's named in the output
+            const hidden = output.last_hidden_state || output.embeddings || output.logits || Object.values(output)[0];
+            
+            if (!hidden || !hidden.dims) {
+                 throw new Error("Model did not return a valid tensor. Output keys: " + Object.keys(output).join(', '));
+            }
+
+            let seqLen, hiddenSize;
+            if (hidden.dims.length === 3) {
+                 seqLen = hidden.dims[1];
+                 hiddenSize = hidden.dims[2];
+            } else if (hidden.dims.length === 2) {
+                 seqLen = 1;
+                 hiddenSize = hidden.dims[1];
+            } else {
+                 throw new Error("Unexpected tensor dimensions: " + hidden.dims.join('x'));
+            }
+
             const data = hidden.data;
             
             const meanEmbedding = new Array(hiddenSize).fill(0);

@@ -235,7 +235,18 @@ export default function AlignerExamView({ onBack }) {
         {modelEngine === 'v2' && transcriber.isBusy && (
            <div className="mb-4">
              <p className="text-sm text-yellow-400 animate-pulse">Running 3-Brain Pipeline locally in your browser...</p>
-             <p className="text-xs text-gray-400">{transcriber.currentTask}</p>
+             <p className="text-xs text-gray-400 mb-2">{transcriber.currentTask}</p>
+             {transcriber.progressItems.length > 0 && transcriber.progressItems.some(i => i.status !== 'ready' && i.status !== 'done') && (
+                 <div className="bg-gray-800 p-3 rounded text-xs space-y-1">
+                     <p className="text-green-400 font-bold mb-1">Downloading/Installing AI Models (First time only):</p>
+                     {transcriber.progressItems.filter(i => i.status !== 'ready' && i.status !== 'done').map((item, idx) => (
+                         <div key={item.file || idx} className="flex justify-between">
+                             <span className="truncate w-3/4 text-gray-300">{item.file}</span>
+                             <span className="text-gray-400">{Math.round(item.progress || 0)}%</span>
+                         </div>
+                     ))}
+                 </div>
+             )}
            </div>
         )}
 

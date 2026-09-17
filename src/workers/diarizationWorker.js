@@ -1,4 +1,4 @@
-import { pipeline, env } from '@xenova/transformers';
+import { AutoProcessor, AutoModel, env } from '@xenova/transformers';
 import { kmeans } from 'ml-kmeans';
 
 // Disable local models since we will fetch from huggingface
@@ -6,16 +6,20 @@ env.allowLocalModels = false;
 env.useBrowserCache = true;
 
 class DiarizationPipeline {
-    static instance = null;
+    static processor = null;
+    static model = null;
     
     static async getInstance(progress_callback) {
-        if (this.instance === null) {
-            this.instance = await pipeline('feature-extraction', 'Xenova/wavlm-base-plus-sv', {
+        if (this.processor === null) {
+            this.processor = await AutoProcessor.from_pretrained('Xenova/wavlm-base-plus-sv', { progress_callback });
+        }
+        if (this.model === null) {
+            this.model = await AutoModel.from_pretrained('Xenova/wavlm-base-plus-sv', {
                 device: 'webgl',
                 progress_callback
             });
         }
-        return this.instance;
+        return { processor: this.processor, model: this.model };
     }
 }
 
@@ -23,7 +27,7 @@ self.addEventListener('message', async (e) => {
     const { id, audio, sampleRate = 16000 } = e.data;
 
     try {
-        const extractor = await DiarizationPipeline.getInstance(x => {
+        const { processor, model } = await DiarizationPipeline.getInstance(x => {
             self.postMessage({ id, status: 'progress', data: x });
         });
 
@@ -64,8 +68,27 @@ self.addEventListener('message', async (e) => {
             if (rms > maxRms) maxRms = rms;
 
             // Predict
-            const output = await extractor(chunk);
-            embeddings.push(Array.from(output.data));
+            const inputs = await processor(chunk);
+            const output = await model(inputs);
+            
+            // Extract the embedding by taking the mean of the sequence (mean pooling)
+            // output.last_hidden_state is a tensor of shape [1, seq_len, 768]
+            const hidden = output.last_hidden_state;
+            const seqLen = hidden.dims[1];
+            const hiddenSize = hidden.dims[2];
+            const data = hidden.data;
+            
+            const meanEmbedding = new Array(hiddenSize).fill(0);
+            for (let i = 0; i < seqLen; i++) {
+                for (let j = 0; j < hiddenSize; j++) {
+                    meanEmbedding[j] += data[i * hiddenSize + j];
+                }
+            }
+            for (let j = 0; j < hiddenSize; j++) {
+                meanEmbedding[j] /= seqLen;
+            }
+            
+            embeddings.push(meanEmbedding);
         }
 
         // 3. Cluster using K-Means

@@ -31,8 +31,8 @@ self.addEventListener('message', async (event) => {
 
         let output = await generator(prompt, {
             max_new_tokens,
-            temperature: 0.7,
-            do_sample: true
+            temperature: 0.0,
+            do_sample: false
         });
 
         const fullResponse = output[0].generated_text;

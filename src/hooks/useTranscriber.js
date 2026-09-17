@@ -104,7 +104,11 @@ export function useTranscriber() {
             workerAi.current.postMessage({
                 id: Date.now(),
                 messages: [
-                    { role: 'system', content: 'You are an Ermis auditor. Review the transcript. If any word seems mispronounced or contextually ambiguous (e.g. libary instead of library, or authentication/verification), format it as {{corrected_word}}. Leave everything else EXACTLY as is, including tags like [laughter] and <s1>. Return only the corrected text.' },
+                    { role: 'system', content: 'You are an Ermis transcription auditor. Your only job is to return the exact transcript provided by the user, but you must format mispronounced or ambiguous words with {{}}. DO NOT add conversational replies. DO NOT add html. ONLY return the transcript.' },
+                    { role: 'user', content: '<s2> Yeah, the libary is over there.' },
+                    { role: 'assistant', content: '<s2> Yeah, the {{library}} is over there.' },
+                    { role: 'user', content: '<s1> We need authentication for this.' },
+                    { role: 'assistant', content: '<s1> We need {{authentication}} for this.' },
                     { role: 'user', content: mergedText }
                 ],
                 max_new_tokens: 500

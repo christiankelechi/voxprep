@@ -26,17 +26,17 @@ self.addEventListener('message', async (event) => {
             self.postMessage({ id, status: 'progress', data: x });
         });
 
-        // Format messages for Qwen Chat
+        // Format messages for Qwen ChatML
         let prompt = messages.map(m => `<|im_start|>${m.role}\n${m.content}<|im_end|>`).join('\n') + '\n<|im_start|>assistant\n';
 
         let output = await generator(prompt, {
             max_new_tokens,
             temperature: 0.0,
-            do_sample: false
+            do_sample: false,
+            return_full_text: false // IMPORTANT: prevents it from returning the prompt!
         });
 
-        const fullResponse = output[0].generated_text;
-        const botReply = fullResponse.split('<|im_start|>assistant\n').pop().replace('<|im_end|>', '').trim();
+        const botReply = output[0].generated_text.replace('<|im_end|>', '').trim();
 
         self.postMessage({ id, status: 'complete', output: botReply });
     } catch (err) {

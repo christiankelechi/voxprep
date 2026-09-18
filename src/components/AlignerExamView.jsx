@@ -118,18 +118,28 @@ export default function AlignerExamView({ onBack }) {
     }
   };
 
-  // Listen for transcriber results
   useEffect(() => {
     if (modelEngine === 'v2') {
       if (transcriber.transcript) {
+        // Dynamically extract all unique speakers (e.g. <s1>, <s2>, [bg], <nt>) from the transcript
+        const speakerMatches = transcriber.transcript.match(/(<s\d+>|\[bg\]|<nt>)/g) || [];
+        const uniqueSpeakers = [...new Set(speakerMatches)];
+        
+        // If no speakers found, default to <s1>
+        if (uniqueSpeakers.length === 0) uniqueSpeakers.push('<s1>');
+        
+        const metadata = uniqueSpeakers.map(spk => ({
+            speaker: spk,
+            gender: "Unknown",
+            nativity: "Unknown"
+        }));
+
         setResult({
           save_state: 'Good',
           spoken_form: transcriber.transcript,
           written_form: transcriber.rawTranscript,
           discard_reasons: [],
-          speaker_metadata: [
-            { speaker: "<s1>", gender: "Unknown", nativity: "Unknown" }
-          ]
+          speaker_metadata: metadata
         });
         setIsProcessing(false);
       }

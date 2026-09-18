@@ -117,8 +117,17 @@ self.addEventListener('message', async (e) => {
         if (k > 1) {
             const ans = kmeans(embeddings, k, { initialization: 'kmeans++' });
             
+            // Map random cluster IDs to chronological speaker numbers
+            const clusterMap = {};
+            let nextSpeakerId = 1;
+
             for (let i = 0; i < timestamps.length; i++) {
-                let speakerTag = `<s${ans.clusters[i] + 1}>`;
+                const clusterId = ans.clusters[i];
+                if (clusterMap[clusterId] === undefined) {
+                    clusterMap[clusterId] = nextSpeakerId++;
+                }
+
+                let speakerTag = `<s${clusterMap[clusterId]}>`;
                 if (volumes[i] < bgThreshold) {
                     speakerTag = '[bg]'; // Override distant/quiet speech as background
                 }

@@ -6,7 +6,7 @@ env.allowLocalModels = false;
 
 class PipelineSingleton {
     static task = 'automatic-speech-recognition';
-    static model = 'Xenova/whisper-base'; // Upgraded from tiny to base for 100% higher accuracy
+    static model = 'Xenova/whisper-tiny.en'; // Reverting to tiny.en to prevent silent Out-Of-Memory (OOM) browser crashes
     static instance = null;
 
     static async getInstance(progress_callback = null) {

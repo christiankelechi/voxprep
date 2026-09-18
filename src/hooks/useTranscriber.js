@@ -21,7 +21,6 @@ export function useTranscriber() {
         if (!workerTranscriber.current) {
             workerTranscriber.current = new Worker(new URL('../workers/transcriberWorker.js', import.meta.url), { type: 'module' });
             workerDiarizer.current = new Worker(new URL('../workers/diarizationWorker.js', import.meta.url), { type: 'module' });
-            workerAi.current = new Worker(new URL('../workers/aiWorker.js', import.meta.url), { type: 'module' });
 
             const handleMessage = (workerName, e) => {
                 if (e.data.status === 'progress') {
@@ -53,20 +52,12 @@ export function useTranscriber() {
                 }
             });
 
-            workerAi.current.addEventListener('message', (e) => {
-                handleMessage('Semantic AI', e);
-                if (e.data.status === 'complete') {
-                    setTranscript(e.data.output);
-                    setIsBusy(false);
-                    setCurrentTask('');
-                }
             });
         }
 
         return () => {
             if (workerTranscriber.current) workerTranscriber.current.terminate();
             if (workerDiarizer.current) workerDiarizer.current.terminate();
-            if (workerAi.current) workerAi.current.terminate();
         };
     }, []);
 
@@ -97,22 +88,17 @@ export function useTranscriber() {
                  }
             }
 
-            // Fallback rule processing on the merged text (cleaning up spaces etc)
+            // Rule processing on the merged text (cleaning up spaces etc)
             mergedText = mergedText.replace(/\s+/g, ' ').trim();
 
-            // Run through Semantic LLM
-            workerAi.current.postMessage({
-                id: Date.now(),
-                messages: [
-                    { role: 'system', content: 'You are an Ermis transcription auditor. Your only job is to return the exact transcript provided by the user, but you must format mispronounced or ambiguous words with {{}}. DO NOT add conversational replies. DO NOT add html. ONLY return the transcript.' },
-                    { role: 'user', content: '<s2> Yeah, the libary is over there.' },
-                    { role: 'assistant', content: '<s2> Yeah, the {{library}} is over there.' },
-                    { role: 'user', content: '<s1> We need authentication for this.' },
-                    { role: 'assistant', content: '<s1> We need {{authentication}} for this.' },
-                    { role: 'user', content: mergedText }
-                ],
-                max_new_tokens: 500
-            });
+            // Mathematically construct the Written Form (by stripping Ermis tags) to match Gemini formatting
+            let writtenText = mergedText.replace(/(<s\d+>|\[bg\]|<nt>|\[laughter\]|\[fp\]|\[hn\])/g, '').replace(/\s+/g, ' ').trim();
+
+            // Set final deterministic results directly without hallucination
+            setTranscript(mergedText);
+            setRawTranscript(writtenText);
+            setIsBusy(false);
+            setCurrentTask('');
         }
     }, []);
 

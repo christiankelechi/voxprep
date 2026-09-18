@@ -93,22 +93,7 @@ export default function AlignerExamView({ onBack }) {
       const audioBuffer = await audioCtx.decodeAudioData(arrayBuffer);
       let float32Data = audioBuffer.getChannelData(0); // Get mono channel
       
-      // PEAK NORMALIZATION: Boost faint audio so the model can hear quiet whispers and fillers (ums).
-      let maxAmplitude = 0;
-      for (let i = 0; i < float32Data.length; i++) {
-        if (Math.abs(float32Data[i]) > maxAmplitude) {
-            maxAmplitude = Math.abs(float32Data[i]);
-        }
-      }
-      if (maxAmplitude > 0 && maxAmplitude < 1.0) {
-         const boostFactor = 0.95 / maxAmplitude;
-         // Create a new boosted array
-         const boostedData = new Float32Array(float32Data.length);
-         for (let i = 0; i < float32Data.length; i++) {
-             boostedData[i] = float32Data[i] * boostFactor;
-         }
-         float32Data = boostedData;
-      }
+      // Removed Peak Normalization hack: it amplifies background static noise to 100%, causing Whisper to endlessly hallucinate numbers on silent audio tracks.
 
       transcriber.transcribe(float32Data);
     } catch (err) {

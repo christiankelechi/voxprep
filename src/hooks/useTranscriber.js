@@ -89,6 +89,9 @@ export function useTranscriber() {
 
             // Rule processing on the merged text (cleaning up spaces etc)
             mergedText = mergedText.replace(/\s+/g, ' ').trim();
+            
+            // Ermis Rule: No commas, no full stops, no question marks, no exclamation marks
+            mergedText = mergedText.replace(/[.,!?]/g, '');
 
             // Mathematically construct the Written Form (by stripping Ermis tags) to match Gemini formatting
             let writtenText = mergedText.replace(/(<s\d+>|\[bg\]|<nt>|\[laughter\]|\[fp\]|\[hn\])/g, '').replace(/\s+/g, ' ').trim();

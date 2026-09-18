@@ -92,6 +92,9 @@ export function useTranscriber() {
             
             // Ermis Rule: No commas, no full stops, no question marks, no exclamation marks
             mergedText = mergedText.replace(/[.,!?]/g, '');
+            
+            // Ermis Rule: Transcribe the dollar sign ($), euro (€), percent (%), and ampersand (&) as words.
+            mergedText = mergedText.replace(/%/g, ' percent').replace(/\$/g, 'dollars ').replace(/&/g, ' and ').replace(/€/g, 'euros ');
 
             // Mathematically construct the Written Form (by stripping Ermis tags) to match Gemini formatting
             let writtenText = mergedText.replace(/(<s\d+>|\[bg\]|<nt>|\[laughter\]|\[fp\]|\[hn\])/g, '').replace(/\s+/g, ' ').trim();

@@ -117,6 +117,23 @@ self.addEventListener('message', async (e) => {
         if (k > 1) {
             const ans = kmeans(embeddings, k, { initialization: 'kmeans++' });
             
+            // Detect if the two clusters are actually the same person by measuring Cosine Similarity
+            const centroid1 = ans.centroids[0].centroid;
+            const centroid2 = ans.centroids[1].centroid;
+            
+            let dotProduct = 0;
+            let norm1 = 0;
+            let norm2 = 0;
+            for (let j = 0; j < centroid1.length; j++) {
+                dotProduct += centroid1[j] * centroid2[j];
+                norm1 += centroid1[j] * centroid1[j];
+                norm2 += centroid2[j] * centroid2[j];
+            }
+            const similarity = dotProduct / (Math.sqrt(norm1) * Math.sqrt(norm2));
+            
+            // If similarity is very high (> 0.9), it's just one speaker
+            const isSingleSpeaker = similarity > 0.90;
+
             // Map random cluster IDs to chronological speaker numbers
             const clusterMap = {};
             let nextSpeakerId = 1;
@@ -127,10 +144,12 @@ self.addEventListener('message', async (e) => {
                     clusterMap[clusterId] = nextSpeakerId++;
                 }
 
-                let speakerTag = `<s${clusterMap[clusterId]}>`;
+                let speakerTag = isSingleSpeaker ? '' : `<s${clusterMap[clusterId]}>`;
+                
                 if (volumes[i] < bgThreshold) {
                     speakerTag = '[bg]'; // Override distant/quiet speech as background
                 }
+                
                 segments.push({
                     start: timestamps[i].start,
                     end: timestamps[i].end,
@@ -139,7 +158,7 @@ self.addEventListener('message', async (e) => {
             }
         } else {
              for (let i = 0; i < timestamps.length; i++) {
-                let speakerTag = `<s1>`;
+                let speakerTag = '';
                 if (volumes[i] < bgThreshold) {
                     speakerTag = '[bg]';
                 }

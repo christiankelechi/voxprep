@@ -1,0 +1,2305 @@
+Esempi audio
+I lettori audio di questo documento (Audio 1, Audio 2, …) non funzionano in Labelbox. Ascolta ogni esempio dai link qui
+sotto (aprire in una nuova scheda). Tutti i clip in una pagina: https://ermis-training-audio-emtblb57ba-uc.a.run.app/l/italian
+Audio samples (Italian)
+The audio players in this document (Audio 1, Audio 2, …) do not work inside Labelbox. Listen to each sample through the
+links below (open in a new tab). All clips on one page: https://ermis-training-audio-emtblb57ba-uc.a.run.app/l/italian
+Audio 1 Clip 1 · risate https://ermis-training-audio-emtblb57ba-uc.a.run.app/c/it
+-f1e0806cf3/play
+Audio 2 Clip 2 · rumore umano https://ermis-training-audio-emtblb57ba-uc.a.run.app/c/it
+-4d2a082829/play
+Audio 3 Clip 3 · artefatto audio https://ermis-training-audio-emtblb57ba-uc.a.run.app/c/it
+-8fae8c50c9/play
+Audio 4 Clip 4 · audio distorto https://ermis-training-audio-emtblb57ba-uc.a.run.app/c/it
+-bec5a836d9/play
+Audio 5 document sample only (not one of the
+quiz clips)
+https://ermis-training-audio-emtblb57ba-uc.a.run.app/c/it
+-1491370c0f/play
+Audio 6 Clip 6 · ehm / oh https://ermis-training-audio-emtblb57ba-uc.a.run.app/c/it
+-1ef43a843e/play
+Audio 7 Clip 7 · eh / balbuzie https://ermis-training-audio-emtblb57ba-uc.a.run.app/c/it
+-0a17fad7d9/play
+Audio 8 Clip 8 · oh https://ermis-training-audio-emtblb57ba-uc.a.run.app/c/it
+-a2ce1d0bf8/play
+Audio 9 Clip 9 · mmm https://ermis-training-audio-emtblb57ba-uc.a.run.app/c/it
+-03bf7a74ca/play
+Audio 10 Clip 10 · aha https://ermis-training-audio-emtblb57ba-uc.a.run.app/c/it
+-02e0307565/play
+Audio 11 Clip 11 · mm-mm https://ermis-training-audio-emtblb57ba-uc.a.run.app/c/it
+-9c00b6057c/play
+Audio 12 Clip 12 · ah-ah https://ermis-training-audio-emtblb57ba-uc.a.run.app/c/it
+-9868e94743/play
+Audio 13 Clip 13 · mm-hm https://ermis-training-audio-emtblb57ba-uc.a.run.app/c/it
+-41a530b2fa/play
+Audio 14 Clip 14 · numeri https://ermis-training-audio-emtblb57ba-uc.a.run.app/c/it
+-5b8270e08f/play
+Audio 15 Clip 15 · acronimi https://ermis-training-audio-emtblb57ba-uc.a.run.app/c/it
+-62522008f1/play
+Audio 16 Clip 16 · contrazioni https://ermis-training-audio-emtblb57ba-uc.a.run.app/c/it
+-0170350e21/play
+Audio 17 (= Audio 7) Clip 7 · eh / balbuzie https://ermis-training-audio-emtblb57ba-uc.a.run.app/c/it
+-0a17fad7d9/play
+If a link does not open when clicked, copy the address into the browser. The conventions document follows on the next page.
+Ermis Transcription Instructions - IT
+Trascrizione (solo in forma parlata)
+In questa raccolta, acquisirai la rappresentazione testuale del discorso umano, nonché
+informazioni non testuali come il genere e la madrelingua dell'interlocutore.
+Ascolterai file audio con enunciati umani e trascriverai il discorso vocale così come pronunciato
+dall'utente. Questi dati verranno utilizzati per valutare le prestazioni e la capacità del modello di
+riconoscere, comprendere e fornire risposte vocali.
+Sommario
+● Descrizione generale dell'attività
+● Importanza dell'accuratezza della trascrizione
+● Diagramma di flusso visivo per la trascrizione di un segmento
+Regole di trascrizione fondamentali
+● Tag
+o Ambito di una caratteristica: Entro l’audio vs. Audio completo
+o Selezione di più di una caratteristica
+o Nessun audio
+o Nessun discorso
+o Contiene contenuto sensibile
+o Contiene discorso sintetico
+o Lingua principalmente diversa da quella di destinazione
+o Discorso sovrapposto
+o Voci simultanee
+o Suoni vocali non lessicali (risate, rumore umano)
+o Voce in sottofondo
+o Rumore di fondo eccessivo
+o Artefatto audio
+o Audio Distorto
+o Lingua diversa da quella di destinazione
+▪ Dizionari locali
+● Parole e frasi incomprensibili e ipotizzate
+● Discorso e grammatica non standard (parole pronunciate male)
+● Interiezioni e riempitivi
+● Normalizzazione del testo
+o Numeri
+o Acronimi
+o Sequenze di lettere
+o Sequenze alfanumeriche
+o Nomi propri
+▪ Titoli ed entità di catalogo
+▪ Lista di entità di catalogo
+▪ URL e indirizzi e-mail
+▪ Canali YouTube
+▪ Nomi delle persone
+▪ Nomi utente
+▪ Titoli onorifici
+o Altro
+▪ Plurali e possessivi delle sequenze di lettere
+▪ Contrazioni e contrazioni informali
+▪ Parole con la stessa pronuncia e lo stesso significato
+● Caratteri speciali, simboli e punteggiatura
+o Apostrofi
+o Trattini
+o Troncamenti, autocorrezioni e balbuzie
+● Descrittori utente
+o Numero di interlocutori
+o Genere
+o Madrelingua
+● Linee guida per la casella dei commenti
+● Best practice per la ricerca
+● Glossario
+● Appendice
+o Appendice 1 - Supplemento di Trascrizione
+▪ Dizionario e gerarchia delle risorse
+▪ Nomi di luoghi
+● Note sulla versione
+Descrizione generale dell'attività
+Questa sezione fornisce una panoramica dell'attività.
+Per ogni attività, ti viene fornito un file audio. Il tuo obiettivo finale è generare una trascrizione
+della forma parlata dell'audio. Le trascrizioni della forma parlata hanno, tra le altre, le seguenti
+caratteristiche:
+● Le lettere sono solo in minuscolo.
+● La punteggiatura è limitata (vedere le regole nelle istruzioni).
+● I numeri sono scritti come parole (ad esempio, tre).
+Nota: Nota: con trascrizione della forma parlata NON si intende l'utilizzo dell'ortografia fonetica.
+Trascrivi sempre attenendoti all'ortografia del dizionario di riferimento (Appendice 1).
+Il flusso di lavoro di trascrizione presenta un menu a discesa per l'intera categoria audio a
+selezione singola, quindi (quando la categoria è Nessuna) un elenco di caratteristiche audio a
+selezione multipla, una casella di testo per la trascrizione, un menu a discesa per il numero di
+interlocutori e descrittori per interlocutore.
+Per svolgere un'attività, segui i passaggi seguenti:
+1. Ascolta la registrazione. Basta riprodurre la clip, non occorre digitare nulla. Concentrati
+sull'assimilare il significato generale (argomento, interlocutori). Il contesto può aiutarti a
+capire cosa trascrivere, soprattutto se ci sono parole poco chiare o omofoni.
+2. Imposta la categoria dell’audio completo. In “L'intero file rientra in una di queste
+categorie?”, seleziona l'unica categoria che descrive l'intero file (Nessun audio, Nessun
+discorso, Contiene contenuti sensibili, Contiene discorso sintetico o Lingua
+principalmente diversa da quella di destinazione). Se una di queste è applicabile, il gioco
+è fatto: il file non viene trascritto e le domande rimanenti non vengono visualizzate. Se
+nessuna è applicabile, seleziona Nessuna e continua.
+3. Seleziona tutte le caratteristiche audio presenti nel file dalla selezione multipla
+(Discorso sovrapposto, Voci simultanee, Risate, Rumore umano, Voce in sottofondo,
+Rumore di fondo eccessivo, Artefatto audio, Audio distorto o Lingua diversa da quella di
+destinazione). Lasciala vuota se non ce ne sono.
+4. Trascrivi l'audio in forma parlata. Includi i riempitivi ([fp]), le interiezioni, gli
+indicatori di discorso incomprensibile (()) e i marker di errore di pronuncia {{}} dove
+devono essere applicati. Non digitare altri tag in linea. Lascia vuota la trascrizione per un
+file con solo audio (solo risate, rumore umano, canto, rumore di fondo eccessivo, voce in
+sottofondo, voci simultanee o discorsi sovrapposti, senza discorso).
+5. Indica il numero di interlocutori, quindi imposta genere e madrelingua di ciascun
+interlocutore Se il file non ha un linguaggio comprensibile, le domande su Genere e
+Madrelingua per gli interlocutori non vengono visualizzate.
+6. Invia l’attività.
+Attenzione: l'uso del riconoscimento vocale automatico (Automatic Speech Recognition, ASR)
+per produrre trascrizioni è vietato.
+Importanza dell'accuratezza della trascrizione
+La trascrizione rappresenta la mappa tra audio e testo che verrà utilizzata per addestrare un
+modello di sintesi vocale. Ciò significa che le tue trascrizioni sono i segnali che il modello
+utilizzerà per apprendere l'associazione tra audio e testo. Il modello apprende: "quando sento
+questo suono, il testo corretto è questo." Ogni discrepanza tra ciò che è presente nell'audio e
+ciò che digiti insegna al modello qualcosa di sbagliato. Ciò ha un impatto sul prodotto finale e
+mina la fiducia dei clienti. Ecco perché trascrivi non solo ogni parola, ma ogni “uhm” e “oh”, le
+parole ripetute e i suoni non vocali esattamente come vengono pronunciati, e selezioni tutte le
+caratteristiche audio pertinenti.
+Ci sono tre modi in cui una trascrizione non rispetta tale mappa. Questi sono gli errori più critici
+per il modello:
+● Eliminazione: tralasci qualcosa che è stato detto (una parola, un “uhm”, una ripetizione)
+o non selezioni una caratteristica presente. Il modello apprende erroneamente "VA BENE
+ignorare i suoni nell'audio" e, durante la produzione, elimina parole vere. Audio: “Credo,
+ehm, credo di sì” --> Trascrizione errata: “credo di sì” / Trascrizione corretta: “credo ehm
+credo di sì”
+● Allucinazione: aggiungi qualcosa che non è stato detto (una parola extra, un'ipotesi
+digitata come se fosse certa) o selezioni una caratteristica che non è presente. Il modello
+apprende erroneamente a "inventare contenuti per riempire le parti mancanti" e, durante
+la produzione, inventa delle parole. Audio: “probabilmente dobbiamo c-casa” -->
+Trascrizione errata: “probabilmente dobbiamo andare a casa” / Trascrizione corretta:
+“probabilmente dobbiamo c-casa”
+● Sostituzione: scrivi una parola diversa da quella che è stata pronunciata (fraintendere,
+“correggere” la grammatica, normalizzare qualcosa che non dovresti). Il modello
+apprende la mappatura errata tra suono e testo. Audio: “se io avrei saputo, venivo” ->
+Trascrizione errata: “se io avessi saputo venivo” / Trascrizione corretta: “se io avrei
+saputo venivo”
+Regola generale: se leggi solo la trascrizione e rivedi le caratteristiche selezionate, insieme
+dovrebbero tenere conto di tutto ciò che c'era nell'audio e niente di quello che non c’era: stesse
+parole, stessi riempitivi, stesso ordine. In caso di dubbio, trascrivi ciò che senti, non ciò che ti
+aspetti.
+Diagramma di flusso visivo per la trascrizione di un
+segmento
+Utilizza il diagramma seguente come guida per fornire trascrizioni accurate di ogni segmento
+audio.
+[[Regole di trascrizione fondamentali]]
+Il flusso di lavoro è composto da quattro fasi, nell'ordine: (1) imposta l'intera categoria audio, (2)
+seleziona le caratteristiche audio presenti, (3) trascrivi il discorso, (4) imposta i metadati degli
+interlocutori. Le sezioni seguenti seguono questo ordine.
+Tag (lista di controllo)
+Cosa sono i tag e perché sono importanti: I tag sono etichette che indicano caratteristiche
+specifiche dell'audio, come le voci simultanee, le risate, i suoni non lessicali e le voci in
+sottofondo. Indicare correttamente queste caratteristiche è fondamentale per il modello. La
+mancanza di un tag necessario o l'aggiunta di un tag che non dovrebbe essere aggiunto è un
+segnale di errore critico per il modello, proprio come le parole mancanti o l'aggiunta di parole
+errate.
+L'interfaccia utente presenta i tag in due domande:
+1. Categoria audio completa (selezione singola, obbligatoria). “L'intero file rientra in una
+di queste categorie?” Scegli la categoria che descrive l'intero file o Nessuna. Se scegli
+una categoria diversa da Nessuna, il file non viene trascritto: la casella di trascrizione e le
+domande sull’interlocutore (numero, genere, madrelingua) non vengono visualizzate.
+2. Caratteristiche audio (selezione multipla, opzionale). “Seleziona tutte le caratteristiche
+audio presenti nel file.” Scegli ogni caratteristica audio che ascolti insieme al discorso
+trascritto. Questa domanda viene visualizzata solo quando la categoria per l’audio
+completo è Nessuna. Lasciala vuota se non ce ne sono.
+Linee guida generali: Per prima cosa imposta la categoria dell’audio completo. Se è Nessuna,
+trascrivi il discorso, quindi seleziona tutte le caratteristiche audio presenti.
+Opzioni per l'intera categoria audio (selezione singola):
+Opzione Significato
+Nessun audio L'audio è vuoto.
+Nessun discorso Nessuna voce nell'intero file e nessun altro suono codificabile.
+Contiene contenuto sensibile Il file contiene contenuti sensibili (parolacce, contenuti
+espliciti).
+Contiene discorso sintetico Il file contiene parlato/TTS generato dal computer.
+Lingua principalmente diversa
+da quella di destinazione
+Il file è principalmente o interamente in una lingua diversa da
+quella di destinazione. Non fare altro; il file non viene
+trascritto.
+Nessuno Il file contiene discorso trascrivibile. Continua con le
+caratteristiche, la trascrizione e le domande sull’interlocutore.
+Se selezioni un'opzione diversa da Nessuna, la casella di trascrizione e le domande
+sull’interlocutore vengono annullate.
+Ambito di una caratteristica: Entro l’audio vs. Audio completo
+Una caratteristica può descrivere l'intero file audio o una breve occorrenza al suo interno. Questa
+distinzione decide quale delle due domande la registra e se c'è qualcosa da trascrivere.
+Categoria audio completo (menu a discesa 1). Queste categorie descrivono l'intero file e
+significano sempre che non ci sarà nessuna trascrizione. Selezionandone una, si annullano la
+casella di trascrizione e le domande sull’interlocutore (numero, genere, madrelingua): Nessun
+audio, Nessun discorso, Contiene contenuti sensibili, Contiene discorso sintetico o Lingua
+principalmente diversa da quella di destinazione
+Caratteristiche all’interno dell’audio (menu a discesa 2). Queste si verificano insieme al
+discorso trascritto e vengono registrati nella selezione multipla: Discorso sovrapposto, Voci
+simultanee, Risate, Rumore umano, Voce in sottofondo, Rumore di fondo eccessivo, Artefatto
+audio, Audio distorto o Lingua diversa da quella di destinazione.
+File con solo suono non verbale (nessun riconoscimento vocale, ma non una categoria del
+menu a discesa 1). Quando l'intero file è composto solo da risate, solo rumore umano (incluso il
+canto), solo rumori di fondo eccessivi, solo voci in sottofondo, solo voci simultanee o solo
+discorsi sovrapposti, senza voce intelligibile: imposta la categoria dell’audio intero su Nessuna,
+seleziona la caratteristica corrispondente nel menu a discesa 2 e lascia vuota la trascrizione. Per il
+numero di interlocutori, seleziona 0; le domande relative a Genere e Madrelingua per gli
+interlocutori non vengono visualizzate. Il canto è codificato come rumore umano e non viene
+trascritto anche se i testi sono udibili.
+Discorso sintetico. Se il file contiene un discorso sintetico (generato dal computer/TTS),
+imposta la categoria audio completo su Contiene discorso sintetico. Questo vale sia che l'intero
+file sia sintetico sia che lo sia solo in parte (ad esempio, una persona che parla con un bot). Per
+riconoscere il discorso sintetico, considera più delle semplici caratteristiche acustiche: i sistemi
+TTS spesso commettono errori nel “leggere” la forma scritta, ad esempio pronunciano male una
+parola, leggono in modo errato un'abbreviazione o un numero, o mettono l'accento sulla sillaba
+sbagliata, mentre per il resto sembrano parlare la lingua correntemente. È quella combinazione,
+un errore di lettura nel discorso altrimenti perfettamente corrente, il segno di discorso sintetico.
+Un errore di pronuncia da parte di un non madrelingua o di un bambino non è un segno di
+discorso sintetico. Se non hai la certezza che il file contenga discorso sintetico, non tirare a
+indovinare; imposta la categoria su Nessuna e trascrivi.
+Lingua diversa da quella di destinazione Se il file contiene una lingua diversa da quella di
+destinazione, seleziona Lingua diversa da quella di destinazione nel menu a discesa 2 e trascrivi
+comunque il discorso nella lingua di destinazione. Le parole prese in prestito e i passaggi una
+lingua all’altra che si presentano comunemente vengono trascritti normalmente. Altrimenti, se il
+file è principalmente nella lingua di destinazione con alcune parti in lingua diversa da quella di
+destinazione mescolate, seleziona Nessuna nel menu a discesa 1, seleziona Lingua diversa da
+quella di destinazione nel menu a discesa 2 e trascrivi il discorso nella lingua di destinazione,
+utilizzando (()) per le sezioni in lingua diversa da quella di destinazione che non riesci a
+trascrivere. Se il file è principalmente o interamente in una lingua diversa da quella di
+destinazione, imposta la categoria dell'intero audio su Lingua principalmente diversa da quella di
+destinazione; il file non viene trascritto e le domande dell’interlocutore non vengono
+visualizzate.
+La casella di trascrizione viene lasciata vuota (o nascosta) quando il file non contiene nessun
+discorso da trascrivere: una categoria dell’audio completo diversa da Nessuna o un file di solo
+audio non verbale. In tutti gli altri casi, incluso un file contrassegnato come Lingua diversa da
+quella di destinazione, trascrivi il discorso presente.
+Selezione di più di una caratteristica
+Puoi applicare più di una caratteristica a un singolo file nella selezione multipla delle
+caratteristiche audio, e devi selezionare tutte le caratteristiche presenti. Ad esempio, un file può
+avere discorso sovrapposto e voce in sottofondo, oppure artefatti audio e risate. Seleziona tutto
+quello che senti.
+La categoria audio completa (menu a discesa 1) è a selezione singola: scegli la categoria che
+descrive l'intero file o Nessuna. Nessun discorso appartiene alla categoria dell'audio intero, non
+alla selezione multipla, quindi non è mai combinato con una caratteristica interna all'audio. Un
+file che contiene solo suoni (solo risate, solo rumore umano, ecc.) appartiene alla categoria
+Nessuna più la corrispondente caratteristica di selezione multipla, non Nessun discorso.
+Nessun audio
+Quando l'audio è vuoto, imposta la categoria audio intero su Nessun audio. Le domande sulla
+trascrizione e sull'interlocutore non vengono visualizzate.
+Nessun discorso
+Linee guida generali: Quando l'intero file non ha voce e nessun altro suono codificabile,
+imposta la categoria audio intero su Nessun discorso. L'accurato uso delle codifiche in assenza
+di discorso insegna al modello a non colmare i vuoti con contenuti che presentano allucinazioni.
+Linee guida specifiche:
+● Usa Nessun discorso solo quando non c'è discorso e nessun altro suono codificabile
+● Se c'è suono codificabile ma non discorso, si tratta di un file di solo suono (categoria
+Nessuno + caratteristica)
+● Questo non si applica se è presente discorso, compreso il discorso con pause prolungate.
+● Non utilizzare selezioni per indicare una pausa nel discorso.
+Contiene contenuto sensibile
+Quando il contenuto dell'audio è sensibile, ad esempio contiene parolacce o contenuti espliciti,
+imposta la categoria dell'intero audio su Contiene contenuto sensibile. Non esiste un criterio
+prestabilito che qualifichi i contenuti sensibili per questo flusso di lavoro. Usa il tuo miglior
+giudizio per determinare se l'enunciato è sensibile. Lo scopo del flusso di lavoro non è quello di
+identificare i contenuti sensibili, questa opzione raccoglie dati generali e tendenze per il cliente.
+Contiene discorso sintetico
+Imposta la categoria dell’audio completo su Contiene discorso sintetico quando il file contiene
+discorso sintetico (generato dal computer/TTS). Quando questa categoria viene selezionata,
+lascia la trascrizione vuota, non è richiesta nessuna trascrizione. Questo vale sia che l'intero file
+sia sintetico sia che lo sia solo in parte, incluso un file in cui una persona sta parlando con un bot.
+Per riconoscere il discorso sintetico, utilizza sia le caratteristiche acustiche sia il modo in cui
+l'interlocutore legge la forma scritta: i sistemi TTS spesso pronunciano male una parola,
+interpretano male un'abbreviazione o un numero o enfatizzano una parola in modo strano mentre
+per il resto sembrano parlare la lingua correntemente. È un errore di lettura all'interno di un
+discorso altrimenti perfettamente corrente e che suona come madrelingua che segnala un
+discorso sintetico. Una pronuncia o una lettura errata da parte di un non madrelingua o di un
+bambino non è un segno di discorso sintetico.
+Se non hai la certezza che il file contenga discorso sintetico, non tirare a indovinare: trascrivilo.
+Lingua principalmente diversa da quella di destinazione
+Imposta la categoria audio completa su Lingua principalmente diversa da quella di destinazione
+quando il file è principalmente o interamente in una lingua diversa da quella di destinazione. La
+casella di trascrizione e le domande sull’interlocutore non vengono visualizzate e non ti è
+richiesto di fare altro.
+Non utilizzare questa categoria per un file che è principalmente nella lingua di destinazione con
+alcune lingue diverse da quella di destinazione mescolate. In tal caso seleziona Nessuno,
+seleziona Lingua diversa da quella di destinazione nella selezione multipla delle caratteristiche
+audio e trascrivi il parlato nella lingua di destinazione (vedi Lingua diversa da quella di
+destinazione nel passaggio 2).
+Opzioni relative alle caratteristiche audio (selezione multipla,
+mostrate solo quando la categoria è Nessuna):
+Caratteristica Significato
+Discorso sovrapposto Discorso simultaneo intelligibile da più di un interlocutore
+Voci simultanee Discorsi incomprensibili e sovrapposti di più interlocutori
+Risate Risate da un interlocutore identificato
+Rumore umano Sbadiglio, pianto, tosse, schiarimento della gola, starnuto, schiocco
+labiale, sospiro, inspirazione/espirazione intensa, canto
+Voce in sottofondo Suoni vocali o non lessicali emessi da un interlocutore non
+identificabile
+Rumore di fondo
+eccessivo
+Rumore di fondo persistente o che disturba l’ascolto
+Artefatto audio Rumore tecnico breve e non vocale (disturbo statico, schiocco, clic,
+stridio di feedback, glitch)
+Audio Distorto Audio distorto a causa di problemi di registrazione o microfono.
+Lingua diversa da
+quella di destinazione
+Il file contiene una lingua diversa da quella di destinazione che puoi
+trascrivere. Trascrivila usando il dizionario ufficiale; usa (()) per
+qualsiasi parola su cui non hai certezza
+Discorso sovrapposto
+Linee guida generali: Quando più di un interlocutore parla contemporaneamente e il discorso
+sovrapposto è comprensibile, trascrivi le parole nell'ordine in cui si presentano e seleziona la
+casella Discorso sovrapposto. Registra il numero totale di interlocutori nel menu a discesa del
+numero di interlocutori e imposta Genere e Madrelingua per ciascuno.
+Linee guida specifiche:
+● Trascrivi tutte le parole comprensibili pronunciate durante la sovrapposizione.
+● Se la sovrapposizione comprensibile diventa incomprensibile, trascrivi le parole
+comprensibili, usa (()) per la parte che non riesci a distinguere e seleziona anche Voci
+simultanee.
+● Seleziona Discorso sovrapposto solo quando il contenuto è comprensibile; seleziona
+Voci simultanee quando la sovrapposizione è incomprensibile.
+● Per un gruppo numeroso (più di 15 persone) che risponde contemporaneamente con una
+risposta breve e identica, trascrivi la risposta una volta se comprensibile e conta il gruppo
+come un singolo interlocutore; se incomprensibile, seleziona Voci simultanee.
+Esempi:
+Audio Trascrizione accettabile A
+(parlato)
+Casella di
+controllo
+L'Utente 1 e l'Utente 2 dicono "Stop"
+esattamente nello stesso momento
+stop stop Discorso
+sovrapposto
+Risposte di pubblico/gruppo (grandi gruppi, più di 15 persone)
+● Per un gruppo numeroso (più di 15 persone) che risponde contemporaneamente con una
+risposta breve e identica, trascrivi la risposta una volta se comprensibile e conta il gruppo
+come un singolo interlocutore; se incomprensibile, seleziona Voci simultanee.
+Esempio:
+Audio Testo
+trascritto
+Selezioni/caselle di
+controllo
+Interlocutore 1 (insegnante): “Pronti?” Pubblico (più
+di 15 studenti): “Sì!”
+pronti sì
+Interlocutore 1: “Cosa diciamo?” Il pubblico risponde
+in modo incomprensibile
+cosa diciamo
+(())
+Voci simultanee
+Voci simultanee
+Linee guida generali: Voci simultanee segnala discorsi incomprensibili e sovrapposti di più
+interlocutori. Trascrivi le parole comprensibili che lo circondano e seleziona la casella Voci
+simultanee.
+Linee guida specifiche: Se la sovrapposizione è incomprensibile, usa (()) nel testo nel punto in
+cui si verifica e seleziona Voci simultanee. Seleziona Voci simultanee solo quando il contenuto
+non si riesce a comprendere, non usarlo mai solo perché l'ordine degli interlocutori non è chiaro.
+Esempi:
+Esempio Audio Testo trascritto
+(parlato)
+Caselle di
+controllo
+1 Utente 1: Riproduci- (L'Utente 1 e l'Utente 2
+parlano in modo incomprensibile
+contemporaneamente.) Utente 2: Non ascoltarla.
+riproduci (())
+non ascoltarla
+Voci
+simultanee
+2 L'Utente 1 e l'Utente 2 parlano tra loro in modo
+incomprensibile contemporaneamente.
+(()) Voci
+simultanee
+3 Utente 1 a Utente 2: Sono così arrabbiata con te!
+(L'Utente 1 e l'Utente 2 parlano in modo
+incomprensibile contemporaneamente.) Utente 2
+all’Utente 1: ... non è colpa mia!
+sono così
+arrabbiata con
+te (()) non è
+colpa mia
+Voci
+simultanee
+Suoni vocali non lessicali (risate, rumore umano)
+Linee guida generali i suoni vocali non lessicali sono rumori emessi da un interlocutore che non
+possono essere rappresentati con l'ortografia standard. Seleziona Risate per le risate e Rumore
+umano per qualsiasi altro suono non lessicale (sbadiglio, pianto, tosse, schiarimento della gola,
+starnuto, schiocco delle labbra, sospiro, forte inspirazione o espirazione). Verifica se il file
+contiene discorso o meno; se un file contiene solo suoni di questo tipo, non trascrivere nessuna
+parola e seleziona le caselle pertinenti.
+Linee guida specifiche:
+● NON selezionare Rumore umano per la normale respirazione. Serve per forti inspirazioni
+ed espirazioni, sbadigli, pianto o altri suoni vocali non lessicali diversi dal respiro.
+● Un suono emesso da un interlocutore non identificabile viene registrato come Voce in
+sottofondo anziché Risata o Rumore umano.
+● Il canto è codificato come Rumore umano. Un file composto completamente di canto non
+viene trascritto, anche se il testo è udibile; seleziona Rumore umano e lascia la
+trascrizione vuota.
+Esempi:
+Esempio Audio Testo trascritto
+(parlato)
+Casella di controllo
+1 L'interlocutore interrompe una parola:
+"fanta-" (suono) "stico".
+fantastico Rumore umano
+2 Utente 1: R*iproduci mu-*Utente 2 (non
+identificabile): *(tosse)*Utente 1: -sica
+per favore.
+riproduci musica
+per favore
+Voce in sottofondo
+3 Utente 1: *Alza il volume.Utente 2:
+Riproduci mu-*Utente 1:
+*(starnuto)*Utente 2: -sica per favore.
+alza il volume
+riproduci musica
+per favore
+Discorso
+sovrapposto,
+Rumore umano
+4 Utente 1: Riproduci (tosse)... Utente 2:
+Riproduci musica.
+riproduci riproduci
+musica
+Rumore umano
+5 Utente: Riproduci (due colpi di tosse)
+musica.
+riproduci musica Rumore umano
+6 Utente 1: Stop. Utente 2 a Utente 1: Dille
+di (starnuto) riprodurre musica.
+stop dille di
+riprodurre musica
+Rumore umano
+7 Utente 1: (risata) Utente 2: Sei divertente!
+Utente 1: (risate)
+sei divertente Risate
+8 Utente 1: Stop. Utente 2 (non
+identificabile): (starnuto)
+ferma Voce in sottofondo
+9 Utente 1: pausa... Utente 2 (non
+identificato): (tosse) Utente 3: Riproduci!
+pausa riproduci Voce in sottofondo
+ESEMPIO AUDIO: questo esempio mostra la trascrizione di Risata.
+Audio 1: ▶ Part3_Example3_Laughter_IT.mp3
+TRASCRIZIONE (FORMA PARLATA): “ho detto a tutti che ero a dallas non avevo idea di
+dove fossi”
+Casella di controllo: Voce in sottofondo, Risata, Artefatto audio
+ESEMPIO AUDIO: questo esempio mostra la trascrizione di Rumore umano.
+Audio 2: ▶ Part3_Example4_Hn_IT.mp3
+TRASCRIZIONE (FORMA PARLATA): "atlanta recentemente dopo un volo in tarda serata
+per cercare di arrivare qui e non c'erano voli perché c'era tutta quella eh tu- faccenda del
+controllo del traffico aereo"
+Casella di controllo: Rumore umano, Artefatto audio
+Voce in sottofondo
+Linee guida generali: Voce in sottofondo indica una voce in sottofondo che non può essere
+attribuita a un interlocutore identificato, una voce troppo distante o poco chiara per essere
+assegnata a una persona specifica (ad esempio, una voce lontana in mezzo alla folla o una voce
+non identificabile in un'altra stanza). Seleziona Voce in sottofondo indipendentemente dalla
+lingua parlata. Voce in sottofondo copre anche i suoni non lessicali provenienti da interlocutori
+non identificabili.
+Linee guida specifiche:
+● Seleziona Voce in sottofondo solo quando non riesci a determinare chi sta parlando.
+● Se riesci a identificare un interlocutore distinto, contalo nel menu a discesa degli
+interlocutori anche se non fa parte della conversazione principale. Se riesci a identificarli
+ma non riesci a comprenderne il contenuto, usa (()) nella trascrizione per la loro parte.
+● Non trascrivere la voce in sottofondo in sé. La lista di controllo ne registra la presenza.
+● L'assenza di una parola di attivazione non significa di per sé che il discorso sia una voce
+in sottofondo: giudica in base al contesto audio.
+Esempi:
+La tabella seguente mostra alcuni esempi di voci di sottofondo.
+Esempio Audio Testo trascritto
+(parlato)
+Casella di
+controllo
+1 Utente: Chiama mamma. Si sente vagamente
+una voce lontana e non identificabile. Utente:
+“In vivavoce.”
+chiama mamma in
+vivavoce
+Voce in
+sottofondo
+2 Utente 1: Chiama mamma. Utente 2: Dille che
+la saluto. Utente 3 (distante, incomprensibile)
+chiama mamma
+dille che la saluto
+Voce in
+sottofondo
+Rumore di fondo eccessivo
+Linee guida generali: Seleziona Rumore di fondo eccessivo quando il file presenta rumori non
+vocali persistenti o di disturbo presenti in gran parte dell'audio, come frusci, ronzii costanti,
+traffico, macchinari, vento o rumore della folla. È un caso diverso da un breve artefatto audio,
+che è un singolo rumore puntuale.
+Linee guida specifiche:
+● Usa Rumore di fondo eccessivo per un rumore continuo e di disturbo; usa Artefatto audio
+per una singola breve sequenza intorno a cui riesci a trascrivere.
+● Trascrivi il discorso normalmente se rimane comprensibile. Se il rumore rende
+impossibile la valutazione dell'intero file, seleziona invece Audio distorto.
+Audio Testo trascritto
+(parlato)
+Casella di
+controllo
+Utente: a che ora chiude il negozio(rumore del traffico
+forte e costante)
+a che ora chiude il
+negozio
+Rumore di fondo
+eccessivo
+Utente: imposta un timer di dieci minuti(ronzio
+costante dei macchinari dappertutto; discorso ancora
+chiaro)
+imposta un timer di
+dieci minuti
+Rumore di fondo
+eccessivo
+Artefatti audio
+Linee guida generali: Artefatto audio indica un breve artefatto audio non vocale, ad esempio
+una scarica statica, un pop, un clic, uno stridio di ritorno audio o un problema tecnico
+momentaneo. Utilizzalo per rumori tecnici circoscritti, non per rumori di fondo persistenti.
+Linee guida specifiche:
+● Seleziona Artefatto audio e continua a trascrivere il discorso normalmente.
+● Non selezionare Artefatto audio per l'audio troppo confuso da trascrivere: in questi casi
+seleziona Audio distorto.
+● Scelta di uno dei due: utilizza Artefatto audio per un rumore breve e isolato che puoi
+trascrivere; utilizza Audio distorto quando problemi di registrazione o microfono
+compromettono l'intero file. Se non hai la certezza, chiediti "Posso comunque trascrivere
+un discorso significativo attorno a questo rumore?": sì significa Artefatto audio, no
+significa Audio distorto.
+Esempi:
+Esempio Audio Testo trascritto (parlato) Casella di
+controllo
+1 Utente: Riproduci musica (breve scarica
+di rumore audio).
+riproduci musica Artefatto audio
+2 Utente 1: Chiama mamma. Utente 2:
+Dille (clic) che la saluto.
+chiama mamma dille
+che la saluto
+Artefatto audio
+3 (Breve stridio di ritorno audio) Utente:
+Stop.
+ferma Artefatto audio
+ESEMPIO AUDIO: artefatto audio
+Audio 3: ▶ Part3_Example6_AudioArtifact_IT.mp3
+TRASCRIZIONE (FORMA PARLATA): "sì sembra un tempismo perfetto"
+Casella di controllo: Artefatto audio
+Audio Distorto
+Linee guida generali: Seleziona Audio distorto per indicare che l'audio è distorto a causa di
+problemi di registrazione o microfono. È necessario raramente.
+Linee guida specifiche:
+● Se l'audio salta o il suono è danneggiato, seleziona la categoria Audio distorto e continua
+a trascrivere il discorso normalmente usando (()) per le parti distorte
+● Non utilizzare Audio distorto per audio intenzionalmente distorto per proteggere la
+privacy (ad es. cambiamenti di tonalità); questi vengono applicati dopo la registrazione e
+non influiscono sulle prestazioni del modello.
+ESEMPIO AUDIO: audio distorto
+Audio 4: ▶ garbled_b87c0dd3-0eaf-491c-bcf1-9c17dffb54b1.mp3
+TRASCRIZIONE (FORMA PARLATA): “(())”
+Casella di controllo: Audio distorto
+Lingua diversa da quella di destinazione
+Se nell'enunciato appare una lingua diversa da quella di destinazione, prova a trascriverla se le
+parole/frasi sono ragionevolmente utilizzate nella lingua di destinazione (ad es. “ha starnutito e
+io faccio tipo gesundheit”). Se comprendi la lingua, trascrivine il più possibile. Utilizza solo
+accenti e segni diacritici che fanno parte della lingua di destinazione. Se la parola include un
+accento che non fa parte della lingua di destinazione, trascrivi la lettera comune più simile.
+Inserire una doppia parentesi per rappresentare sezioni di discorso in una lingua diversa da quella
+di destinazione che non sono state comprese. Seleziona Lingua diversa da quella di destinazione
+nella selezione multipla delle caratteristiche audio (menu a discesa 2); la selezione non annulla la
+trascrizione o le domande sugli interlocutori.
+NON trascrivere lingue diverse da quella di destinazione nella voce in sottofondo. Seleziona
+Voce in sottofondo per indicare che è presente una lingua diversa da quella di destinazione nelle
+voci in sottofondo.
+In caso non sia possibile trascrivere nessuna parte di un enunciato in una lingua diversa da quella
+di destinazione, inserisci una doppia parentesi.
+Se l'intero enunciato è incomprensibile in una lingua diversa da quella di destinazione, imposta la
+categoria dell'intero audio su Lingua principalmente diversa da quella di destinazione (menu a
+discesa 1); il file non viene trascritto e le domande dell’interlocutore non vengono visualizzate.
+Dizionari di lingue diverse da quella di destinazione
+Quando incontri una parola in una lingua non di destinazione e se le parole/frasi sono usate
+ragionevolmente nella lingua di destinazione (ad esempio "ha starnutito e io ero come
+gesundheit"), usa il dizionario di quella lingua diversa da quella di destinazione per confermare
+l'ortografia corretta. Adegua l'ortografia per adattarla ai caratteri consentiti nella tua lingua:
+● Rimuovi i segni diacritici stranieri che non fanno parte dell'ortografia italiana. Ad
+esempio, "medellín" diventa "medellin" perché la combinazione í non esiste in italiano,
+ma gli accenti nativi come à, è, é, ì, ò, ù sono mantenuti.
+● Usa solo caratteri latini solo se la tua lingua non consente alfabeti non latini. Ad
+esempio, se un interlocutore pronuncia una parola in russo o arabo, scrivila usando
+caratteri latini anziché caratteri cirillici o arabi.
+Se la parola non compare nel dizionario pertinente, usa Google per verificare l'ortografia.
+Di seguito è riportato un elenco completo dei dizionari delle diverse lingue:
+Inglese
+Fai riferimento ai seguenti dizionari per avere conferma dell'ortografia delle parole inglesi.
+1. Dizionario Merriam-Webster - https://www.merriam-webster.com/
+2. American Heritage Dictionary - https://www.ahdictionary.com/
+3. Cambridge Dictionary - https://dictionary.cambridge.org/
+*Nota: fai riferimento a Cambridge solo per il vocabolario specifico dell'inglese britannico.
+Spagnolo
+· Real Academia Española - https://www.rae.es/
+Francese
+· Larousse - https://www.larousse.fr/
+Italiano
+· Treccani - https://www.treccani.it/
+Tedesco
+· Duden - https://duden.de
+Portoghese
+· Dicio - https://www.dicio.com.br/
+Olandese
+· Van Dale Groot woordenboek van de Nederlandse taal - https://www.vandale.nl/
+Tabelle di trascrizione delle lingue diverse da quella di destinazione
+La trascrizione di lingue diverse da quella di destinazione dipende dalla tua familiarità con la
+lingua. La tabella seguente fornisce maggiori dettagli.
+Tipo di
+contenuto
+dell'enunciato Familiarità con il contenuto
+Esempio di
+trascrizione
+(parlato)
+Uso di tag delle
+caselle di
+controllo
+Lingua straniera
+in una parte
+dell'enunciato
+Enunciato
+completo in una
+lingua straniera
+I contenuti sono facilmente
+identificabili e se ne ha la
+certezza senza utilizzare Google
+o un dizionario di una lingua
+diversa da quella di
+destinazione.
+quiero taco
+bell
+Lingua diversa
+da quella di
+destinazione
+Il contenuto è facilmente
+identificabile e se ne ha la
+certezza dopo aver utilizzato un
+dizionario o Google per verificare
+l'ortografia corretta della parola
+che si è sentita.
+petite
+maman
+Lingua diversa
+da quella di
+destinazione
+Il contenuto non è facilmente
+identificabile, ma se ne ha la
+certezza dopo aver utilizzato un
+dizionario o Google per verificare
+l'ortografia corretta della parola
+che si è sentita.
+rikititriki triqui
+titriki
+Lingua diversa
+da quella di
+destinazione
+Il contenuto non è facilmente
+identificabile e non se ne ha la
+certezza nemmeno dopo aver
+utilizzato un dizionario o Google
+per verificare l'ortografia corretta
+della parola che si è sentita.
+((siza))
+Lingua diversa
+da quella di
+destinazione
+Il contenuto non è facilmente
+identificabile e non si ha la
+certezza che Google abbia
+trovato l'ortografia corretta della
+parola che si è sentita. Inoltre,
+voglio vedere
+(())
+Lingua diversa
+da quella di
+destinazione
+non si riesce a trovare la parola
+sul dizionario.
+Contenuto
+incomprensibile
+in qualsiasi parte
+dell'enunciato
+Un enunciato sembra
+Mi piace (non capisci la lingua). mi piace (())
+Lingua diversa
+da quella di
+destinazione
+L'intero enunciato
+è incomprensibile
+Un enunciato si presenta come
+(non capisci la lingua).
+nessuna
+trascrizione
+Lingua
+principalmente
+diversa da
+quella di
+destinazione
+(menu a discesa
+1)
+Click or tap here to enter text.
+Lingua diversa da quella di destinazione nel contesto
+Se una parola non è presente nel dizionario ufficiale per la lingua, considerarla una parola in una
+lingua diversa da quella di destinazione. Senza tag, questo significa semplicemente che trascrivi
+tutto quello che puoi. Quando trascrivi parole in una lingua diversa da quella di destinazione,
+elimina gli accenti o i caratteri che non esistono in italiano.
+Per ulteriori esempi di lingua di destinazione e lingua diversa da quella di destinazione nel
+contesto, consulta la tabella seguente.
+Tipo di
+contenuto
+dell'enunciato
+Scenario dettagliato Enunciato
+dell'utente
+Trascrizione
+corretta
+(parlato)
+Lingua straniera
+nello slot
+L'utente chiede di riprodurre una
+canzone francese (lingua
+straniera).
+Il contenuto è facilmente
+identificabile e non è necessario
+utilizzare il catalogo come
+indicato nel dizionario.
+riproduci
+les enfants
+du paradis
+riproduci les
+enfants du
+paradis
+L'utente chiede di riprodurre una
+canzone francese (lingua
+straniera).
+Il contenuto è popolare e si è certi
+della trascrizione dopo aver
+utilizzato Google o il catalogo per
+verificare l'ortografia corretta della
+parola sentita.
+riproduci
+les enfants
+du paradis
+riproduci les
+enfants du
+paradis
+L'utente chiede di riprodurre una
+canzone francese (lingua
+straniera).
+Il contenuto non è facilmente
+identificabile e si è certi della
+trascrizione dopo aver utilizzato
+Google o il catalogo per verificare
+l'ortografia corretta della parola
+sentita.
+riproduci
+les enfants
+du paradis
+riproduci les
+enfants du
+paradis
+L'utente chiede di riprodurre una
+canzone francese (lingua
+straniera).
+Il contenuto non è facilmente
+identificabile e non si è certi della
+trascrizione dopo aver utilizzato
+Google o il catalogo per verificare
+l'ortografia corretta della parola
+sentita. È stata inserita l'ipotesi
+più plausibile tra le doppie
+parentesi.
+riproduci
+les enfants
+du paradis
+riproduci ((les
+enfants du
+paradis))
+L'utente chiede di riprodurre una
+canzone francese (lingua
+straniera).
+Il contenuto non è facilmente
+identificabile e non si è certi della
+trascrizione dopo aver utilizzato
+Google o il catalogo per verificare
+l'ortografia corretta della parola
+sentita. Non è possibile ipotizzare
+la trascrizione.
+riproduci
+les enfants
+du paradis
+riproduci (())
+Lingua straniera
+nella frase
+portante
+L'utente chiede in spagnolo
+(lingua straniera) di nominare il
+cantante di una canzone inglese.
+Il contenuto è facilmente
+identificabile e non è necessario
+utilizzare il catalogo come
+indicato in Dizionario e gerarchia
+delle risorse.
+quien canto
+hello
+quien canto
+hello
+L'utente chiede in spagnolo
+(lingua straniera) di nominare il
+cantante di una canzone inglese.
+Il contenuto è facilmente
+identificabile e si è certi della
+trascrizione dopo aver utilizzato
+Google o il catalogo per verificare
+l'ortografia corretta della parola
+sentita
+quien canto
+hello
+quien canto
+hello
+L'utente chiede in spagnolo
+(lingua straniera) di nominare il
+cantante di una canzone inglese.
+Il contenuto non è facilmente
+identificabile e si è certi della
+trascrizione dopo aver utilizzato
+Google o il catalogo per verificare
+l'ortografia corretta della parola
+sentita.
+quien canto
+hello
+quien canto
+hello
+L'utente chiede in spagnolo
+(lingua straniera) di nominare il
+cantante di una canzone inglese.
+Il contenuto non è facilmente
+identificabile e non si è certi della
+trascrizione dopo aver utilizzato
+Google o il catalogo per verificare
+l'ortografia corretta della parola
+sentita. È stata inserita l'ipotesi
+più plausibile tra le doppie
+parentesi.
+quien canto
+hello
+((quien canto))
+hello
+L'utente chiede in spagnolo
+(lingua straniera) di nominare il
+cantante di una canzone inglese.
+quien canto
+hello
+(())
+Il contenuto non è facilmente
+identificabile e non si è certi della
+trascrizione dopo aver utilizzato
+Google o il catalogo per verificare
+l'ortografia corretta della parola
+sentita. Non è possibile ipotizzare
+la trascrizione.
+Enunciato
+completo in lingua
+straniera
+L'utente pronuncia una frase in
+tedesco (lingua straniera).
+Il contenuto è facilmente
+identificabile e non è necessario
+utilizzare il catalogo come
+elencato in .
+wie geht es
+dir
+wie geht es dir
+L'utente pronuncia una frase in
+tedesco (lingua straniera).
+Il contenuto è facilmente
+identificabile e si è certi della
+trascrizione dopo aver utilizzato
+Google o il catalogo per verificare
+l'ortografia corretta della parola
+sentita
+wie geht es
+dir
+wie geht es dir
+L'utente pronuncia una frase in
+tedesco (lingua straniera).
+Il contenuto non è facilmente
+identificabile e si è certi della
+trascrizione dopo aver utilizzato
+Google o il catalogo per verificare
+l'ortografia corretta della parola
+sentita.
+wie geht es
+dir
+wie geht es dir
+L'utente pronuncia una frase in
+tedesco (lingua straniera).
+Il contenuto non è facilmente
+identificabile e non si è certi della
+trascrizione dopo aver utilizzato
+Google o il catalogo per verificare
+l'ortografia corretta della parola
+sentita. È stata inserita l'ipotesi
+più plausibile tra le doppie
+parentesi.
+wie geht es
+dir
+((wie geht es
+dir))
+L'utente pronuncia una frase in
+tedesco (lingua straniera).
+Il contenuto non è facilmente
+identificabile e non si è certi della
+trascrizione dopo aver utilizzato
+Google o il catalogo per verificare
+l'ortografia corretta della parola
+sentita. Non è possibile ipotizzare
+la trascrizione.
+wie geht es
+dir
+(())
+Contenuto
+incomprensibile in
+qualsiasi parte
+dell'enunciato
+Una parte dell’enunciato
+dell’utente è Incomprensibile. È
+possibile distinguere il resto del
+contenuto.
+puoi (non
+capisce la
+lingua)
+puoi (())
+L'intero enunciato
+è incomprensibile.
+L'enunciato completo dell'utente è
+incomprensibile.
+(non capisci
+la lingua)
+Lingua
+principalmente
+diversa da
+quella di
+destinazione
+(menu a discesa
+1)
+Lingua straniera
+in slot (rimozione
+dell'accento)
+L'utente chiede di riprodurre una
+canzone di un artista spagnolo il
+cui nome contiene un accento
+ascolta
+canzoni di
+José
+González
+ascolta canzoni
+di jose gonzalez
+La tabella seguente descrive casi non comuni di trascrizione di lingue diverse da quella di
+destinazione e il modo in cui trascrivere.
+Situazione Enunciato Trascrizione corretta
+(parlato)
+L'utente parla in più lingue straniere. L'analista
+è in grado di capire tutte le parti dell'enunciato.
+mi amiga parlami di
+una schauspielerin
+mi amiga parlami di
+una schauspielerin
+L'utente parla in più lingue straniere. L'analista
+è in grado di capire la parte intelligibile ma
+l'altra parte è incomprensibile.
+mi amiga parlami di
+una (non capisci la
+lingua)
+mi amiga parlami di
+una (())
+L'utente parla in più lingue straniere. L'analista
+è in grado di capire la parte intelligibile ma
+non è certo dell'altra parte.
+mi amiga parlami di
+una schauspielerin
+mi amiga parlami di
+una (())
+Omofoni interlinguistici
+Un omofono interlinguistico è una parola pronunciata allo stesso modo sia nella lingua di
+destinazione che in una lingua diversa da quella di destinazione. Un esempio è il termine inglese
+che indica la scarpa (shoe) e il tedesco schuh. Se un omofono interlinguistico si verifica isolato,
+supporre che faccia parte della lingua di destinazione.
+Una parola di origine straniera fa parte della lingua di destinazione solo se il significato
+dell'utente corrisponde al significato del dizionario. Ad esempio, alcuni dizionari non inglesi
+includono la parola inglese "home" poiché si riferisce al campo della tecnologia (ad esempio una
+schermata iniziale o una home page). Se un utente in una lingua non inglese usa la parola "home"
+per riferirsi al luogo in cui si vive, questo uso non fa parte della lingua di destinazione.
+Negli esempi seguenti vengono illustrate le parole di origine straniera che fanno parte della
+lingua di destinazione. Quando una parola è nella lingua di destinazione, se è comprensibile è
+necessario trascriverla.
+Esempio 1: fai lo spelling di tsunami
+Esempio 2: riproduci musica a cappella
+Non trattare le lingue immaginarie come lingue diverse da quella di destinazione.
+Esempio 3: Elfico/Sindarin (Il Signore degli Anelli): “mellon”
+Parole e frasi incomprensibili e ipotizzate
+L'audio può essere rumoroso e non è sempre facile comprendere il discorso di un file audio.
+Questa sezione fornisce le linee guida per la gestione dell'audio poco chiaro, in cui non è
+possibile determinare chiaramente l'accuratezza della trascrizione. È importante contrassegnare
+in modo chiaro e preciso la presenza e la posizione di questi elementi incomprensibili, al fine di
+massimizzare l'utilità dei dati per il modello.
+Linee guida generali: usa le doppie parentesi (()) per un discorso vocale incomprensibile. Un
+singolo (()) può riferirsi a una o più parole incomprensibili. Posizionalo dove si svolge il
+discorso. Non includere spazi all'interno delle parentesi. Utilizza uno spazio per separare (())
+dalle parole adiacenti. L’indicatore di discorso incomprensibile rimane in linea nel testo della
+trascrizione e non ha una casella di controllo.
+Linee guida specifiche:
+● Utilizza (()) dove il discorso è davvero incomprensibile. NON utilizzarlo dove il discorso
+è chiaramente comprensibile. Considera una parola davvero incomprensibile se richiede
+più ascolti, rallentando l'audio o ripetendo le verifiche per identificarla.
+● Cerca sempre di fare del tuo meglio per indovinare ciò che è racchiuso tra parentesi
+quando l'audio è anche solo parzialmente comprensibile, comprese le parole troncate.
+Un'ipotesi incerta è più preziosa di un elemento vuoto (()).
+● Utilizza le parentesi vuote (()) solo quando il discorso è completamente incomprensibile
+anche dopo aver ascoltato più volte: niente sillabe, niente parole intuibili.
+● Utilizza (()) per problemi con il discorso vocale stesso (lingua sconosciuta, parole
+confuse), non per problemi di qualità audio: in questi casi seleziona la casella Audio
+distorto. Ricerca le parole poco familiari prima di contrassegnarle come incomprensibili.
+● Se l'intero file è un discorso incomprensibile dall'interlocutore principale, inserisci solo
+(()).
+● In caso di discorso incomprensibile in sottofondo, consulta la sezione Voce in sottofondo.
+Esempi:
+Esempio Audio Testo trascritto (parlato)
+1 Riproduci
+(incomprensibile).
+riproduci (())
+2 Riproduci (sembra
+“canzoni”)
+riproduci ((canzoni))
+3 (suona come "riproduci
+canzoni")
+((riproduci canzoni))
+4 Ripeti dopo di me: (parole
+o discorso senza senso).
+ripeti dopo di me (())
+5 Riproduci (sembra
+"musica" ma è troncata,
+potrebbe essere "musicale")
+riproduci ((musi-))
+6 L'audio non è chiaro ma
+sembra "sì signora"
+((sì signora))
+7 L'audio non è chiaro ma
+sembra un nome
+((carla))
+8 L'audio è completamente
+indecifrabile, nessuna
+sillaba
+(())
+9 comprensibile il mio amico mi ha invitata ad andare a mangiare cibo
+cinese ma non lo mangio da tantissimo tempo e non so
+cosa prendere credo che l'ultima volta ho mangiato
+pollo in agrodolce con riso fritto ma hai qualche
+consiglio su altre cose che potrebbero piacermi
+10 Incomprensibile (()) ma non so cosa prendere
+ESEMPI AUDIO: i seguenti esempi illustrano un discorso incomprensibile.
+Audio 5: ▶ Part1_Example1_unintelligible speech_IT.mp3
+TRASCRIZIONE (FORMA PARLATA): "((riproduci)) su quanto è aumentata di valore la
+loro casa e quanto vale la loro casa"
+Discorso e grammatica non standard (parole
+pronunciate male)
+Trascrivi i seguenti tipi di discorso così come vengono pronunciati dall'interlocutore.
+● Errori grammaticali: si verificano quando gli interlocutori non seguono le regole della
+lingua e contengono frammenti grammaticali nel loro discorso. Questo non vale per i
+colloquialismi.
+● Parole usate in modo improprio o errato: quando un interlocutore non conosce la
+parola per qualcosa e la sostituisce con un'altra parola errata.
+● Grammatica non standard: grammatica che non rientra nelle norme o convenzioni
+prescrittive di una lingua. I colloquialismi possono utilizzare una grammatica non
+standard.
+● Ripetizione: quando l'interlocutore ripete parole che ha già pronunciato.
+Esempio Audio Testo trascritto Spiegazione
+1 A lui non ci piace quella
+canzone.
+a lui non ci piace quella
+canzone
+Grammatica non standard;
+intesa come discorso
+dialettale.
+2 Aggiungi uno mela sulla
+mia lista.
+aggiungi uno mela sulla
+mia lista
+Errore grammaticale,
+trascritto così com'è.
+3 (L'artista è Jason Mraz.)
+Riproduci canzoni di
+Jason Mars.
+riproduci canzoni di
+jason mars
+L'utente ha confuso il
+cognome dell'artista con
+un'altra parola.
+4 Ti amo molto, molto,
+molto, molto!
+ti amo molto molto molto
+molto
+Ripetizione; “molto” ripetuto
+quattro volte.
+5 Quanto fa cinque più
+cinque più cinque più
+cinque più cinque?
+quanto fa cinque più
+cinque più cinque più
+cinque più cinque
+Ripetizione della frase
+“cinque più”.
+6 Sìsìsìsì sì sì sì sì Ripetizione: trascrivi quante
+più parole comprensibili
+possibile.
+Non trascrivere delle lettere aggiuntive per rappresentare parole o sillabe estese.
+Le doppie parentesi graffe {{}} identificano il caso in cui vi è ambiguità sulla parola che si
+intendeva pronunciare. Questo è diverso dai troncamenti e dall'indovinare parole
+incomprensibili. L’indicatore rimane in linea nel testo della trascrizione e non ha una casella di
+controllo. Questa regola si applica solo quando le parole sono pronunciate in modo errato, non
+sono presenti accenti o caratteristiche dialettali a livello di sistema (ad esempio, è stata eliminata
+la "e" in "-are").
+Se una parola è pronunciata male, ma il contesto la rende chiara e inequivocabile (ad esempio
+"libreia" per "libreria"), normalizza la parola pronunciata male con l'ortografia standard del
+dizionario, senza parentesi graffe. Se una parola è pronunciata male ed è ambiguo il significato
+(ad esempio "autentifica" potrebbe essere "autenticazione" o "verifica"), normalizza la parola
+pronunciata male con una delle possibili parole e inseriscila tra parentesi graffe {{}}.
+Esempio Audio Testo trascritto Spiegazione
+1 Riproduci muscica. riproduci musica Normalizza
+“muscica” con
+“musica”; è chiaro
+cosa si intende.
+2 Quando apre la
+libreia?
+quando apre la libreria Normalizza “libreia”
+in “libreria”; è
+chiaro cosa si
+intende.
+3 Penso che sia
+necessaria
+l'autentifica per
+questo passaggio
+penso che sia necessaria
+{{l’autenticazione}} per questo
+passaggio/penso che sia necessaria
+{{la verifica}} per questo passaggio
+Parola pronunciata
+male ambigua;
+entrambe sono
+valide.
+4 Io ooooooooodio il
+lunedì.
+io odio il lunedì Non trascrivere
+lettere extra per
+sillabe estese.
+Eccezione: conserva l'ortografia non standard delle parole quando fanno parte di un'entità di
+catalogo o del nome di un marchio.
+Esempio Audio Testo trascritto
+1 Sei un po sciocca. sei un pochino sciocca
+2 Riproduci canzoni di Lil Wayne. riproduci canzoni di lil wayne
+Interiezioni e riempitivi
+Cosa sono le interiezioni e i riempitivi e perché sono importanti? Le interiezioni sono segnali
+che un ascoltatore produce durante una conversazione per segnalare che sta
+seguendo/comprendendo/reagendo a ciò che dice l'altra persona, comprese parole non verbali
+utilizzate per affermazioni, negazioni o pensieri. Le interiezioni e i riempitivi sono componenti
+importanti nella comunicazione naturale in tempo reale, quindi vogliamo che la
+trascrizione li acquisisca con la massima precisione, affinché il modello sia in grado di
+comprendere a fondo il discorso dell'utente e risponda di conseguenza. NON trattate le
+interiezioni e i riempitivi come elementi secondari.
+Linee guida generali: trascrivi le interiezioni utilizzando l'ortografia standardizzata indicata
+nella tabella di riferimento riportata di seguito. Utilizza il tag [fp] per i riempitivi non elencati
+nella tabella, nel punto in cui si verificano.
+Linee guida specifiche:
+● Non sostituire i suoni non verbali nelle entità del catalogo (titoli delle canzoni, nomi di
+marchi, ecc.) con la parola di interiezione.
+● Posiziona [fp] dove si verifica; se si verificano due riempitivi uno dopo l'altro, trascrivi
+[fp] una volta sola.
+● Trascrivi ogni riempitivo e ogni interiezione che senti, nell'ordine in cui sono pronunciati
+Tabella di riferimento - Ortografia delle interiezioni:
+Audio / Intenzione Trascrizione (parlato)
+Segnale di accordo o di ascolto (bocca chiusa) mm-hm
+Segnale di accordo o di ascolto (bocca aperta) aha
+Sta pensando o riflettendo mmm
+Breve esitazione (vocale aperta) eh
+Esitazione a labbra chiuse (nasale) ehm
+Segnale di disaccordo (bocca chiusa) mm-mm
+Segnale di disaccordo (bocca aperta) ah-ah
+Sorpresa o realizzazione (suono "o") oh
+Eccitazione o improvviso interesse (suono “u” prolungato) uuh
+Altro [fp]
+Esempi:
+Audio Testo trascritto (parlato)
+Mm-mm, non è quello che ho detto. mm-mm non è quello che ho detto
+Mm-mm-mm. Non mi stai ascoltando! mm-mm-mm non mi stai ascoltando
+Riproduci Mmm Mmm Mmm Mmm dei Crash
+Test Dummies.
+riproduci mmm mmm mmm mmm dei crash
+test dummies
+Puoi ehm, ahhh, puoi riprodurre delle eh
+canzoni?
+puoi ehm [fp] puoi riprodurre delle eh canzoni
+ESEMPIO AUDIO: Questo esempio illustra “ehm” e “oh”
+Audio 6: ▶ Part1_Example2_UmAndOh_IT.mp3
+TRASCRIZIONE (FORMA PARLATA): “sono così felice che sei qui in italia grazie è bello
+essere qui fantastico ehm ehm abbiamo quattro figli che vanno all'università e io frequenterò una
+scuola di specializzazione oh”
+Casella di controllo: Voce in sottofondo
+ESEMPIO AUDIO: l'esempio seguente illustra "eh". Nota che ogni "eh" è stato trascritto
+Audio 7: ▶ Part1_Example3_Uh_IT.mp3
+TRASCRIZIONE (FORMA PARLATA): "questioni regionali ehm quindi eh i- il quando a
+questi incontri t- tu vedi le stesse persone che hanno a che fare con eh con eh quei problemi in
+tutto il medio oriente"
+ESEMPIO AUDIO: “oh”
+Audio 8: ▶ Part1_Example4_Oh_IT.mp3
+TRASCRIZIONE (FORMA PARLATA): "oh è fantastico lo adoro"
+ESEMPIO AUDIO: "mmm"
+Audio 9: ▶ Part1_Example5_Hmm_IT.mp3
+TRASCRIZIONE (FORMA PARLATA): “ molto sorpresa mmm”
+ESEMPIO AUDIO: "aha"
+Audio 10: ▶ Part1_Example6_Uh-huh_IT.mp3
+TRASCRIZIONE (FORMA PARLATA): "sì sì ((come sarebbe)) aha"
+ESEMPIO AUDIO: "mm-mm"
+Audio 11: ▶ Part1_Example7_Mm-mm_IT.mp3
+TRASCRIZIONE (FORMA PARLATA): "non ho un appuntamento da tempo non ho il
+minimo interesse sono proprio come uff mm-mm mm-mm sì"
+ESEMPIO AUDIO: "ah-ah"
+Audio 12: ▶ Part1_Example8_Nuh-huh_IT.mp3
+TRASCRIZIONE (FORMA PARLATA): "(()) carina ah-ah questa è bella ok"
+**ESEMPIO AUDIO: "**mm-hm
+Audio 13: ▶ Part1_Example9_Mm-hm_IT.mp3
+TRASCRIZIONE (FORMA PARLATA): "mm-hm sì mm-hm"
+Normalizzazione del testo
+Cos'è la normalizzazione del testo e perché è importante: La normalizzazione del testo è il
+processo di conversione di diversi formati di testo in rappresentazioni standardizzate. La
+normalizzazione del testo può essere eseguita su diversi elementi. Un esempio sono i numeri: si
+possono trascrivere numeri usando cifre o usando parole. Normalizzare significa decidere un
+formato specifico da utilizzare in modo coerente in tutti i casi. Ricorriamo alla normalizzazione
+per evitare di fornire segnali contrastanti al modello che possono portare a comportamenti
+inaffidabili nel prodotto finale.
+In questa sezione vengono fornite indicazioni sui seguenti argomenti, nell'ambito della
+normalizzazione del testo:
+● Numeri
+● Acronimi
+● Sequenze di lettere
+● Sequenze alfanumeriche
+● Nomi propri
+Numeri
+Trascrivi i numeri usando parole, non cifre. I numeri includono numerali, ordinali (come
+"primo"), quantità, tempi, sequenze, distanze e calcoli.
+● Trascrivi le lettere presenti in codici e sequenze seguite da un punto (ad esempio, "a. b.
+c.", "u. a.").
+Esempi:
+Forma parlata
+ottantasette
+quinto
+tre zero sei
+tre zero sei
+quanto fa cinque più cinque più cinque più cinque più cinque
+il mio codice di conferma è a. b. c. uno due tre
+il numero del volo è u. a. sette ventinove
+la torta costa cinque euro
+ESEMPIO AUDIO: l'esempio seguente illustra la trascrizione di numeri
+Audio 14: ▶ Part2_Example1_Numbers_IT.mp3
+TRASCRIZIONE (FORMA PARLATA):
+"una moneta d'oro una moneta d'oro da un grammo ora ti costerebbe circa duemila euro ma ci
+sono monete più piccole"
+Acronimi
+Trascrivi gli acronimi come parole o come singole lettere:
+● Se l'utente pronuncia un acronimo come parola, trascrivi l'acronimo come parola.
+● Se l'utente lo pronuncia come lettere separate, seguire le regole riportate nella sezione
+Sequenze di lettere.
+Esempi:
+Esempio Audio Testo trascritto (parlato)
+1 Utente: Cos'è l'OPEC? (pronunciato "opec") cos'è l'opec
+2 Utente: Cos'è l'OPEC? (pronunciato "O-P-E-C") cos'è l'o. p. e. c.
+ESEMPIO AUDIO: l'esempio seguente illustra la trascrizione degli acronimi
+Audio 15: ▶ Part2_Example2_Acronyms_IT.mp3
+TRASCRIZIONE (FORMA PARLATA): "signorina rossi luigi bianchi r. t. l."
+Sequenze di lettere
+Le sequenze di lettere sono parole scandite o singole lettere pronunciate in un file audio.
+● Aggiungi un punto, poi uno spazio, dopo ogni singola lettera.
+● NON utilizzare un punto dopo parole di una singola lettera (ad esempio "e", "a", "i", "o").
+Esempi:
+mi chiamo marco martini m. a. r. t. i. n. i.
+Sequenze alfanumeriche
+Le sequenze alfanumeriche contengono una combinazione di lettere e numeri, come codici di
+conferma, numeri di volo, numeri di serie, targhe e riferimenti di prenotazione.
+● Trascrivi le lettere secondo le regole di Sequenze di lettere e i numeri secondo le regole
+di Numeri.
+● Trascrivi la sequenza nell'ordine in cui l'utente la pronuncia.
+Esempi:
+Esempio Audio Testo trascritto in forma parlata
+1 Utente: Il mio codice di conferma è ABC123
+(scandito).
+il mio codice di conferma è a. b. c.
+uno due tre
+2 Utente: Il numero del volo è UA729 (un solo
+numero).
+il numero del volo è u. a. sette
+ventinove
+3 Utente: Il numero di serie è X9R2K. il numero di serie è x. nove r. due
+k.
+4 L'interlocutore dice “ABC 123” senza alcun
+contesto precedente
+a. b. c. uno due tre
+Nomi propri
+Per informazioni sulla trascrizione dei nomi propri, fare riferimento alle seguenti linee guida:
+· Titoli ed entità di catalogo
+· URL e indirizzi e-mail
+· Canali YouTube
+· Nomi delle persone
+Titoli ed entità di catalogo
+Linee guida generali: un'entità di catalogo è una voce della lista con un titolo o un marchio che
+un agente può cercare durante la risoluzione dell'entità: libri, film, canzoni, album, playlist,
+artisti, app, competenze, canali, città, paesi e così via. Le trascrizioni seguono tutte le regole di
+trascrizione standard. (Nota: le linee guida specifiche di una lingua su titoli ed entità di catalogo
+sono riportate in altre sezioni; fai riferimento alle convenzioni nel loro insieme.)
+Linee guida specifiche:
+● Trascrivi i titoli e le entità di catalogo in base alla loro ortografia ufficiale quando
+possibile, compresa la presenza di trattini.
+● Ometti i caratteri non consentiti quando la pronuncia non viene alterata; se un carattere
+sostituisce una lettera, trascrivi la lettera (ad esempio, P!nk → pink, Ke$ha → kesha).
+● Trascrivi numeri e abbreviazioni come parole complete (ad esempio, I Would Die 4 U →
+I would die four u; Alien vs. Predator → alien versus predator).
+● Normalizza l'ortografia di un marchio quando non è pronunciabile come marchio o non
+riflette la pronuncia dell'utente (ad esempio, CHVRCHES → churches).
+● Per una singola lettera collegata a una parola da un trattino, trascrivi il trattino e non
+utilizzare un punto + spazio (ad esempio, T-Pain → t-pain, Oral-B → oral-b).
+● Quando una frase può essere un'entità di catalogo o delle parole comuni, usa il contesto.
+Se si riferisce chiaramente a un'entità nota, trascrivila come tale entità (rispettando il più
+possibile l'ortografia del marchio consentita dalle regole della forma parlata), non
+suddividerla in parole foneticamente simili (ad esempio, U2 → u. two, non "you two";
+"riproduci the northman" → the northman, non "the north men"). Effettua delle ricerche
+in caso di dubbi.
+Esempi:
+Esempio Trascrizione Ortografia originale
+1 panic at the disco Panic! at the Disco
+2 pink P!nk
+3 kesha usa un i. phone Ke$ha usa un iPhone?
+4 i would die four u. I Would Die 4 U
+5 u. two U2
+6 alien versus predator Alien vs. Predator
+7 churches CHVRCHES
+8 k-rock f. m. K-ROQ FM
+9 t-pain T-Pain
+10 oral-b Oral-B
+Lista di entità di catalogo
+Linee guida generali: questa è una lista di riferimento non esaustiva delle entità di catalogo che
+potresti incontrare. Se l'enunciato contiene un'entità non elencata qui, trascrivila comunque e
+cerca l'ortografia del marchio in base a Dizionario e gerarchia delle risorse.
+Linee guida specifiche:
+● Segui sempre le regole di trascrizione standard e tieni conto del contesto del cliente, in
+quanto possono modificare il modo in cui un'entità di catalogo viene trascritta in base alla
+pronuncia.
+● Applica le regole della sezione Titoli ed entità di catalogo.
+Esempi (forma parlata):
+1. favij
+2. nicolò barella
+3. oltre il cielo
+4. percy jackson e gli dei dell'olimpo
+5. fargo
+6. cocomelon
+7. bitconned
+8. cillian murphy
+9. billie eilish
+10. pierfrancesco favino
+...
+URL e indirizzi e-mail
+Linee guida generali: trascrivi gli URL e i domini di posta elettronica come singole parole,
+scrivendo la punteggiatura in base a come l'utente l'ha pronunciata.
+Linee guida specifiche:
+● Scrivi ogni parte come una parola separata; scrivi la punteggiatura come "punto" e
+"chiocciola" in base a come pronunciato.
+● Trascrivi numeri e singole lettere come descritto nelle sezioni Numeri e Sequenze di
+lettere.
+Esempi:
+Esempio Trascrizione corretta Trascrizione incorretta
+1 il natale punto com ilnatale.com
+2 w. w. w. punto i. m. d. b. punto com www.imdb.com
+3 maria rossi otto chiocciola azienda punto com mariarossi8@azienda.com
+Canali YouTube
+Linee guida generali: Trascrivi i nomi dei canali YouTube utilizzando la loro ortografia
+ufficiale. (Applica le stesse regole quando trascrivi gli streamer di Twitch.)
+Linee guida specifiche:
+● Usa l'ortografia ufficiale/del marchio per impostazione predefinita (ad esempio,
+"cliomakeup").
+● Separa il nome in singole parole o lettere quando il canale contiene il nome di una
+persona, è composto da più nomi propri, include lettere pronunciate separatamente o
+include numeri cardinali/ordinali.
+● Per i canali in inglese, quando la grammatica indica la forma possessiva del nome di una
+persona, normalizzala in modo che corrisponda (ad esempio, "hank's channel"). Ma se il
+canale rende l'uso del possessivo come fosse uno stile, mantieni il marchio e non
+normalizzarlo (ad esempio, "bharatz kitchen").
+Esempi:
+Esempio Trascrizione corretta (parlato)
+1 cliomakeup
+2 justin bieber vevo
+3 hank's channel
+4 bharatz kitchen
+5 dan t. d. m.
+6 only one noah
+7 felix the first
+Nomi delle persone
+Linee guida generali: trascrivi i nomi delle persone in base alle ortografie standard o comuni
+nella lingua di destinazione.
+Linee guida specifiche:
+● Se un nome ha più di un'ortografia comune, è accettabile qualsiasi di queste (ad esempio,
+"debora" o "deborah").
+● I nomi di celebrità, personaggi pubblici e personaggi di fantasia hanno una sola ortografia
+corretta: confermala attraverso una breve ricerca.
+Esempi:
+Esempio Testo trascritto (parlato)
+1 come si scrive debora
+2 come si scrive deborah
+Nomi utente
+Linee guida generali: trascrivi ciò che senti.
+Esempi:
+Forma parlata
+il mio nome utente è luca punto uno due tre
+cerca chiocciola lupo trattino basso nero
+il nome dell'account è bel trattino basso ragazzo novantanove
+samantha uno due quattro cinque
+Titoli onorifici
+Linee guida: i titoli personali devono essere scritti completamente per esteso (ad esempio,
+"signore", "signora") secondo le regole esistenti. Scrivi tutti i titoli personali per esteso.
+Esempi:
+Forma parlata
+chiama il signor rossi
+la signorina bianchi è qui
+riproduci le canzoni della band mister mister
+La sezione seguente fornisce indicazioni per argomenti specifici che non sono stati trattati nelle
+sezioni precedenti. Questi argomenti non sono di secondaria importanza: come gli altri,
+contribuiscono all'accuratezza della trascrizione.
+Altro
+Plurali delle sequenze di lettere
+Linee guida generali: forma i plurali degli acronimi inserendo la desinenza immediatamente
+dopo l'ultimo punto.
+Linee guida specifiche:
+● Nel caso del plurale, trascrivi la "s" subito dopo l'ultimo punto (ad esempio, "c. d.s").
+Esempio:
+ricerca per c. d.s
+Contrazioni e contrazioni informali
+Linee guida generali
+I parlanti usano frequentemente forme parlate informali e contrazioni. Trascrivi queste
+forme come vengono pronunciate, non espanderle o standardizzarle.
+"c'ho fame"
+"c'hai ragione"
+"c'ha detto tutto"
+Audio 16: ▶ Part2_Example3_Contraction_IT.mp3
+TRASCRIZIONE (FORMA PARLATA): "se non mi dici cos'hai comprato cos'hai nella borsa
+e cos'hai in mente per cena ordino delle pizze"
+Parole con la stessa pronuncia e lo stesso significato
+Linee guida generali: quando due varianti ortografiche condividono la stessa pronuncia e lo
+stesso significato ed entrambe appaiono nel dizionario Merriam-Webster, entrambe le forme sono
+accettabili. Il disallineamento etichettatore/verificatore per queste varianti non è un errore (ad
+esempio, obiettivo e obbiettivo).
+Linee guida specifiche:
+● Accetta entrambe le varianti quando sono elencate nel dizionario e condividono
+pronuncia e significato.
+● Alcune parole hanno la stessa pronuncia ma significati diversi: usa la forma che
+corrisponde al significato previsto dall'interlocutore: "hanno" per il verbo avere ("Loro
+hanno ragione"), "anno" per indicare il tempo ("Quest'anno è stato lungo").
+Esempi:
+Variante A Variante B Note
+obiettivo obbiettivo Entrambe accettabili
+familiare famigliare Entrambe accettabili
+Caratteri speciali, simboli e punteggiatura
+Cosa sono i caratteri speciali, i simboli e la punteggiatura e perché sono importanti. I
+caratteri speciali, i simboli e la punteggiatura sono caratteri non alfabetici. Analogamente alla
+normalizzazione del testo, l'obiettivo è utilizzare formati coerenti per questi elementi per evitare
+di inviare segnali contrastanti al modello e migliorarne l'affidabilità.
+Linee guida generali: è consentito solo un set limitato di simboli e non è consentita la
+punteggiatura delle frasi.
+Linee guida specifiche:
+● Trascrivi come parole il segno del dollaro ($), dell'euro (€), della percentuale (%) e la e
+commerciale (&).
+● Non usare la punteggiatura per separare le frasi; usa solo i simboli presenti nella tabella
+di inventario qui sotto.
+● Usa apostrofi e trattini per la lingua di destinazione (consulta le sezioni Apostrofi e
+Trattini per maggiori informazioni).
+La tabella seguente elenca i simboli consentiti nella trascrizione della forma parlata.
+Esempio Nome/i Uso Sezione
+1 Apostrofo Segui le regole linguistiche Apostrofi
+2 Trattino,
+lineetta
+Troncamento; nomi propri
+secondo i casi; seguire le regole
+linguistiche
+Troncamenti, autocorrezioni e
+balbuzie, Titoli ed entità di
+catalogo, Trattini
+3 Parentesi Discorso incomprensibile Parole e frasi incomprensibili e
+ipotizzate
+4 Parentesi
+graffe doppie
+Parole pronunciate male Discorso e grammatica non
+standard
+5 Punto Lettere singole, Sequenze di lettere, acronimi
+6 Parentesi
+quadre
+Tag Riempitivo Interiezioni e riempitivi
+Apostrofi
+Indicazione generale: Usa l'apostrofo secondo le regole standard della grammatica italiana.
+Indicazioni specifiche:
+● Usa l'apostrofo nei casi di elisione e troncamento.
+● Usa l'apostrofo nei nomi di artisti, marchi e persone secondo la loro grafia ufficiale o
+standard.
+Esempio Audio Testo trascritto
+1 "L'acqua è fredda." "l'acqua è fredda"
+2 "Ho visto un'amica." "ho visto un'amica"
+3 "Riproduci L'Anima Vola di Elisa." "riproduci l'anima vola di elisa"
+4 "Quando è uscito L'Avventura?" "quando è uscito l'avventura"
+Trattini
+Linee guida generali: trascrivi i trattini solo nei casi specifici elencati di seguito.
+Linee guida specifiche:
+● Usa un trattino quando il dizionario ufficiale lo prevede. Se esistono ortografie con
+trattino e senza trattino, usa la prima ortografia elencata.
+● Usa un trattino quando appare nel nome di una persona, nel nome di un luogo o in parole
+inventate all'interno del nome o del titolo di un marchio.
+● Non utilizzare trattini in aggettivi composti da più parole o parole comuni che possono
+essere indipendenti.
+Esempi:
+Esempio Testo trascritto (forma parlata)
+1 chi interpretava jean-luc picard
+2 aggiungi coca-cola alla lista della spesa
+3 riproduci ob-la-di ob-la-da dei Beatles
+4 trovami un hotel a massa-carrara
+5 leggi harry potter e il principe mezzosangue
+6 vorrei una maglietta grigioverde
+Troncamenti, autocorrezioni e balbuzie
+Linee guida generali: usa un trattino (-) per indicare una parola troncata o interrotta,
+trascrivendo la maggior parte della parola possibile e posizionando il trattino nel punto in cui
+avviene il troncamento.
+Linee guida specifiche:
+● NON utilizzare un trattino prima o dopo una parola completa. Se una parola completa è
+leggermente troncata ma ancora completamente udibile, trascrivi l'intera parola.
+● Non inserire trattini dopo i punti. Se un interlocutore viene interrotto mentre pronuncia
+singole lettere, trascrivi solo le lettere che ha pronunciato.
+● Utilizza un trattino per un'autocorrezione che determina un troncamento. Se
+un'autocorrezione non determina un troncamento, trascrivi il discorso senza trattini.
+Esempi:
+Esempio Audio Testo trascritto
+(parlato)
+1 Utente: Imposta sveglia per le undi- imposta sveglia per le
+undi-
+2 Utente: -i, basta. -i basta
+3 Utente: Chi ha fondato H & eh… (l'utente dice la lettera "m"
+ma è troncata)
+chi ha fondato h. and
+m.
+4 Utente: tornado si scrive t. o. r. tornado si scrive t. o. r.
+5 Utente: Spegni la television- (il termine “televisione” è
+leggermente troncato ma è comunque perfettamente udibile)
+spegni la televisione
+6 Riproduci quella cian (l'utente si corregge) canzone. riproduci quella cian￾canzone
+7 Dammi le indicazioni per... per l'hotel. dammi le indicazioni
+per per l'hotel
+8 Chiama Carola... aspetta, intendevo Carla! chiama carola aspetta
+intendevo carla
+9 Io m- m- mi piacerebbe che io m- m- mi
+piacerebbe che
+ESEMPIO AUDIO: l'esempio seguente illustra la trascrizione di
+troncamenti/autocorrezioni/balbuzie
+Audio 17: ▶ Part1_Example3_Uh_IT.mp3
+TRASCRIZIONE (FORMA PARLATA): "questioni regionali ehm quindi eh i- il quando a
+questi incontri t- t- tu vedi le stesse persone che hanno a che fare con uh con uh quei problemi in
+tutto il medio oriente"
+Descrittori utente
+Cosa sono i descrittori dell'utente e perché sono importanti? I descrittori dell'utente ci
+consentono di acquisire metadati sugli interlocutori coinvolti nel dialogo. Come i tag, sono utili
+al modello per ottenere una chiara comprensione di ciò che accade nell'audio.
+Le domande sugli interlocutori (numero di interlocutori, genere e madrelingua) vengono
+visualizzate solo quando la categoria dell’audio completo è Nessuna. Non vengono visualizzati
+quando è selezionata una categoria audio completa (Nessun audio, Nessun discorso, Contiene
+contenuti sensibili, Contiene discorso sintetico o Lingua principalmente diversa da quella di
+destinazione). Per un file con solo audio non verbale, seleziona 0 per il numero di interlocutori;
+le domande relative a Genere e Natività per gli interlocutori non vengono visualizzate.
+In questa sezione vengono fornite indicazioni sui seguenti argomenti.
+● Numero di interlocutori
+● Genere
+● Madrelingua
+Numero di interlocutori
+Risposta “Quanti interlocutori identificati contiene l'audio?”
+Scegli una opzione:
+● 1, 2, 3 o 4+: Imposta Genere e Madrelingua per ogni interlocutore identificato
+● 0: un file di solo suono senza interlocutori identificati da descrivere (solo risate, rumore
+umano, canto, rumore di fondo eccessivo, voce in sottofondo, voci simultanee o discorso
+sovrapposto, senza voce comprensibile o un file completamente incomprensibile o
+distorto). Selezionando 0 si nascondono le domande relative al genere e alla madrelingua
+di ciascun interlocutore.
+Genere
+Indica il genere di ciascun interlocutore.
+Utilizza le seguenti definizioni per determinare il genere degli interlocutori all'interno di un file
+audio.
+● Suono maschile: l'interlocutore ha una voce dal suono maschile.
+● Suono femminile: l'interlocutore ha una voce dal suono femminile.
+● Sconosciuto: l'interlocutore ha una voce ambigua, ad es. bambini piccoli, bambini.
+Se non è possibile determinare il genere dell'utente a causa della distorsione vocale, non tirare a
+indovinare. Seleziona Sconosciuto.
+Madrelingua
+Indica la madrelingua di ogni interlocutore identificato nel file audio. Considera come
+madrelingua i parlanti con accenti di paesi italofoni (inclusi Italia, Svizzera italiana, San Marino,
+Città del Vaticano).
+Utilizza le seguenti definizioni per determinare la madrelingua degli interlocutori all'interno di
+un enunciato:
+● Madrelingua: Parlanti madrelingua italiani
+● Non madrelingua: Parlanti non madrelingua italiani
+● Sconosciuto: La madrelingua di tutti gli interlocutori è sconosciuta oppure sono presenti
+sia parlanti madrelingua che non madrelingua.
+NOTA: Se non è possibile determinare la madrelingua dell'utente a causa della distorsione
+vocale, non tirare a indovinare. Seleziona Sconosciuto. (Alcuni ordini di servizio di trascrizione
+utilizzano audio distorto intenzionalmente per oscurare i dettagli identificativi degli utenti.)
+Per classificare un interlocutore come madrelingua o non madrelingua, deve essere presente un
+discorso comprensibile da parte di quell'interlocutore. Se un interlocutore produce solo
+espressioni non verbali (ad esempio, risate, pianti, tosse, sospiri) senza alcun linguaggio
+comprensibile, designa la sua condizione di madrelingua come Sconosciuto.
+Linee guida per la casella dei commenti
+La casella dei commenti è un campo facoltativo. NON utilizzare la casella dei commenti a meno
+che non venga specificamente indicato per una particolare attività o un caso limite. L'inserimento
+di commenti non necessari aumenta il tempo medio di gestione senza aggiungere valore.
+Best practice per la ricerca
+È importante assicurarsi che l'ortografia delle entità sia corretta.
+Effettua una ricerca online per controllare l'ortografia di tutte le entità di cui non si è sicuri. Se
+non sai da dove iniziare, ascolta la parola o le parole. Trascrivile nel miglior modo possibile.
+Includi parole chiave che potrebbero aiutare a indirizzare la ricerca (ad esempio “città”,
+“canzone”, “film” o “attore”).
+Ad esempio, se l'utente chiede la musica dei Bee Gees e non si conosce affatto il gruppo, si
+potrebbe cercare “BGs”. Se non includi i termini di ricerca correlati alla musica, la ricerca non
+troverà l'ortografia corretta.
+Una volta aggiunto un termine correlato alla musica, i risultati della ricerca reindirizzano al
+gruppo musicale Bee Gees, anche se l'ortografia del termine di ricerca non è corretta.
+Glossario
+· Funzionalità audio: un suono che genera un punto dati per un file audio. Di solito viene
+registrato con una casella di controllo.
+· File audio: istanza specifica di dati audio che può includere un discorso e altre funzionalità
+audio. Chiamato anche enunciato.
+· Automatic Speech Recognition (ASR): il processo mediante il quale il dispositivo interpreta il
+discorso degli utenti.
+· Interiezione: una breve risposta dell'ascoltatore come “sì”, “già” o “uh huh” che segnala
+attenzione o riconoscimento senza costituire un turno completo. Le interiezioni in genere si
+presentano mentre un altro interlocutore sta parlando.
+· Entità di catalogo: un elemento di una lista di titoli o di marchi. Gli esempi includono libri,
+film, canzoni, album, playlist, artisti, app, skill, canali, città e paesi. Un'entità di catalogo è un
+elemento che l'agente può cercare in fase di entity resolution.
+· Voci simultanee: discorsi incomprensibili e sovrapposti di più interlocutori.
+· Fonte dati: la situazione da cui hanno avuto origine i dati audio.
+· Dizionario ufficiale: il riferimento ortografico per la lingua di destinazione.
+· Entity resolution: processo di identificazione, collegamento e fusione di record di dati
+differenti che si riferiscono alla stessa entità del mondo reale (come una persona,
+un'organizzazione o un prodotto).
+· Omofono: una parola che ha lo stesso suono di un'altra ma ha un significato diverso.
+· Omonimo: una parola che si scrive come un'altra parola ma ha un significato diverso.
+· Discorso comprensibile: discorso che l'analista è in grado di capire e trascrivere.
+· Interlocutore principale: La persona principale che parla nell'enunciato.
+· Metadati: dati associati a un file (ad esempio genere e madrelingua) che non fanno parte del
+testo trascritto.
+· Lingua diversa da quella di destinazione: una lingua non supportata o prevista in una
+determinata area geografica.
+· Stream: un singolo file audio continuo; può includere vari enunciati.
+· Tag: una caratteristica dell'audio registrata con caselle di controllo.
+· Lingua di destinazione: la lingua supportata o prevista nell'area geografica del dispositivo.
+· Troncamento: l'atto di tagliare una parola o un suono prima della sua fine prevista. L'audio
+troncato si verifica spesso all'inizio o alla fine del file audio.
+· Turno: un tratto di discorso continuo di un interlocutore, delimitato dal discorso di un altro
+interlocutore, da una pausa o dall'inizio o dalla fine del file audio.
+· Discorso incomprensibile: discorso che non si riesce a capire o trascrivere.
+· Utente: l'interlocutore in un file audio.
+· Verificatore: un analista dati che verifica le trascrizioni per assicurarne la qualità.
+Appendice
+Appendice 1 - Supplemento di Trascrizione
+Il supplemento di Trascrizione fornisce ulteriori linee guida per quanto riguarda la trascrizione.
+Dizionario e gerarchia delle risorse
+Consulta il Merriam-Webster Dictionary onlineper verificare l’ortografia delle parole. Se una
+parola non viene trovata in quel dizionario, fai riferimento all’American Heritage Dictionary
+online come fonte secondaria. L'ortografia americana è preferita. Usa il Cambridge Dictionary
+solo per il vocabolario specifico della lingua britannica.
+Se un enunciato contiene un omofono, usa il contesto e il tuo miglior giudizio per determinare
+l'intenzione dell'utente. Se l'omonimo è isolato, usa il tuo miglior giudizio.
+Per confermare l'ortografia delle entità di catalogo, possono essere utilizzate altre risorse
+nell'ordine seguente:
+1. Qualsiasi risorsa su Amazon.com: compresi Amazon Music, il Kindle Store e tutti gli
+altri programmi Amazon. Sono inclusi tutti i siti Web internazionali di Amazon, compresi
+Amazon.co.uk, Amazon.in, e così via.
+2. Google
+3. IMDb.com (per film/TV)
+Nomi di luoghi
+Linee guida generali: Quando si trascrivono i nomi di città, paesi e altri luoghi, considerare la
+lingua da cui provengono i dati.
+Linee guida specifiche:
+● Alcune località sono omofone: includi il contesto della lingua nella ricerca per trovare
+l'ortografia corretta.
+● Lascia che la lingua del dispositivo sorgente guidi la tua scelta tra le ortografie omofone.
+Note sulla versione
+Argomenti Aggiornamento Data
+Lingua diversa da quella di
+destinazione suddivisa per
+quantità; Audio distorto spostato
+nelle caratteristiche
+● Diviso il concetto singolo di
+Lingua diversa da quella di
+destinazione in due controlli.
+“Lingua principalmente
+diversa da quella di
+destinazione” è una categoria
+dell’audio completo (menu a
+discesa 1) per un file che è
+principalmente o interamente
+in una lingua diversa da
+quella di destinazione: non
+trascritto, domande
+dell’interlocutore nascoste.
+“Lingua diversa da quella di
+destinazione” è una
+caratteristica all'interno
+dell'audio (menu a discesa 2)
+per un file principalmente
+nella lingua di destinazione
+mescolato con alcuni
+elementi in lingua diversa da
+quella di destinazione:
+trascrivi il discorso nella
+lingua di destinazione,
+conserva la trascrizione e le
+domande sugli interlocutori.
+● Rinominato dalle precedenti
+etichette “Contiene lingua
+diversa da quella di
+1/9/2026
+destinazione”
+/”Incerta”/”Certa” in “Lingua
+principalmente diversa da
+quella di destinazione” (menu
+a discesa 1) e “Lingua
+diversa da quella di
+destinazione” (menu a
+discesa 2).
+● È stata ripristinata la guida
+completa alla trascrizione in
+stile V2: trascrivi le parole in
+lingua diversa da quella di
+destinazione se utilizzate
+ragionevolmente nella lingua
+di destinazione, usa il
+dizionario della lingua diversa
+da quella di destinazione per
+confermare l'ortografia,
+elimina i segni diacritici o gli
+alfabeti non latini per locale,
+trascrivi la migliore ipotesi
+tra (()) quando non hai la
+certezza, inserisci (()) vuoto
+quando non hai un’ipotesi e
+le tabelle Familiarità/In
+contesto/multilingue.
+● Per discriminare se una
+parola è o non è nella lingua
+di destinazione fa fede il
+dizionario ufficiale (le parole
+straniere presenti sul
+dizionario come “tsunami”
+nella lingua di destinazione,
+senza marcatura).
+● Un intero enunciato
+incomprensibile non nella
+lingua di destinazione va in
+categoria Lingua
+principalmente diversa da
+quella di destinazione (menu
+a discesa 1).
+● Spostato Audio distorto dalle
+categorie dell’audio completo
+(menu a discesa 1) alla
+selezione multipla delle
+caratteristiche audio (menu a
+discesa 2). Ora ha lo stesso
+comportamento di Artefatto
+audio: trascrivi il parlato che
+riesci a trascrivere,
+usa (()) per tratti distorti e
+seleziona Audio distorto. Non
+annulla più la trascrizione.
+Ampliamento dell'ambito
+sintetico; TTS rimosso da
+Madrelingua; canto;
+tokenizzazione lingua diiversa
+da quella di destinazione
+● La casella di controllo è stata
+rinominata da “Discorso
+interamente sintetico” a
+“Contiene discorso sintetico”:
+qualsiasi discorso sintetico
+nel file (inclusa una persona
+che parla con un bot)
+significa che il file non viene
+trascritto.
+● TTS rimosso dalle opzioni
+Madrelingua; il discorso
+sintetico viene rappresentato
+mediante casella di controllo.
+● Un file completamente
+cantato è codificato come
+Rumore umano e non viene
+trascritto anche se i testi sono
+udibili.
+● Il discorso in lingua diversa
+da quella di destinazione
+trascrivibile ma con
+tokenizzazione incerta è
+contrassegnato con Lingua
+diversa da quella di
+destinazione e non trascritto.
+● Le domande sugli
+interlocutori (numero, genere,
+madrelingua) e il campo di
+trascrizione non vengono
+visualizzati quando è
+selezionata una caratteristica
+di non trascrizione.
+Aggiornato il diagramma di
+flusso.
+31/8/2026
+● Ordine delle convenzioni
+aggiornato in base alla nuova
+interfaccia utente
+Aggiunte le sezioni “Ambito di
+una caratteristica: Entro l’audio
+vs. Audio completo” e
+“Selezione di più di una
+caratteristica”
+● Aggiunto: Ambito di una
+caratteristica: Entro l’audio
+vs. Audio completo
+(indicazioni sulle
+caratteristiche entro l’audio
+interno e dell'audio completo
+e quando la trascrizione può
+essere vuota)
+● Aggiunto: Selezione di più di
+una caratteristica
+● “Discorso e grammatica non
+standard (parole pronunciate
+male)” sono stati spostati
+dall'Appendice
+● Il parlato sintetico viene
+registrato per interlocutore
+con Madrelingua = TTS
+anziché con una casella di
+controllo
+● Esempi corretti (trattini
+rimossi)
+● È stata aggiunta una nuova
+casella di controllo: “Rumore
+di fondo eccessivo”
+● Aggiunta la casella di
+controllo “Discorso
+interamente sintetico”
+● Sintetico è come da
+Madrelingua dell’interlocutore
+= TTS.
+● Aggiornamento: l'audio
+interamente sintetico non
+viene trascritto
+27/8/2026
+Modifica del modello V3: tag in
+caselle di controllo; nuove
+caselle di controllo; tag degli
+interlocutori rimossi; i riempitivi
+mantengono [fp]
+● Le caratteristiche audio sono
+state spostate dai tag in linea
+al pannello di controllo
+“Seleziona tutti i tag
+applicabili”: Discorso
+sovrapposto, Voci
+26/8/2026
+simultanee, Suoni vocali non
+lessicali (con Risata e
+Rumore umano), Voce in
+sottofondo, Artefatto audio,
+Audio distorto, Nessun audio,
+Nessun discorso, Lingua
+diversa da quella di
+destinazione, Contenuti
+sensibili.
+● Sono state aggiunte due
+nuove caselle di controllo:
+Rumore di fondo eccessivo e
+Rilevamento di parlato
+sintetico.
+● Sono stati rimossi gli
+indicatori in linea per i turni
+degli interlocutori, il parlato
+sovrapposto, le voci
+simultanee e i suoni non
+lessicali.
+● I riempitivi mantengono il tag
+[fp] e le interiezioni
+mantengono l'ortografia
+standardizzata.
+● L’indicatore per testo
+incomprensibile (()) e
+l’indicatore per parola
+pronunciata male {{}}
+rimangono in linea nel testo
+della trascrizione e non
+hanno una casella di controllo
+corrispondente.
+● Il numero degli interlocutori è
+stato spostato in un menu a
+discesa, con Sesso e
+Madrelingua impostati per
+interlocutore.
+● Rimossi i tag in linea delle
+caratteristiche audio da tutti
+gli esempi, viene invece
+indicata la selezione della
+casella di controllo.
+Modifiche alle trascrizioni degli
+esempi audio, alla sezione sulle
+contrazioni, alla gestione delle
+parole pronunciate male, ai
+suoni vocali non lessicali
+● È stata modificata la sezione
+sulle contrazioni per includere
+una lista delle contrazioni più
+comuni, i consigli sul
+dizionario e i passaggi per
+gestire le contrazioni nelle
+attività.
+● Sono state aggiornate le
+trascrizioni degli esempi
+audio
+● Gestione delle parole
+pronunciate male e uso di
+{{}}: ora {{}} viene utilizzato
+per le parole ambigue perché
+pronunciate male; le parole
+pronunciate male che sono
+inequivocabili hanno
+l'ortografia normalizzata, ma
+non sono incluse all'interno di
+{{}}
+● Suoni vocali non lessicali:
+[bg] è usato per i suoni vocali
+non lessicali prodotti da
+interlocutori non identificabili
+● È stato aggiornato il
+diagramma di flusso per
+includere le modifiche
+precedenti
+● È stato rimosso il requisito di
+identificazione del genere per
+la voce/i suoni in sottofondo
+21/7/2026
+Sono state apportate modifiche
+alle trascrizioni degli esempi
+audio
+Sono state apportate alcune
+modifiche alle trascrizioni degli
+esempi audio
+17/7/2026
+Rimuovere e raggruppare i tag,
+modificare alcune abbreviazioni
+Sono stati rimossi i tag [cough],
+[sigh], [throat-clear], [sneeze],
+[lip-smack] (raggruppati in [hn]),
+rimuovere <i>, <sg>, <hum>, <ws>,
+<pws>, <lv>, modificato "mhm" to
+"mm-hm"
+16/7/2026
+Sono stati rimossi degli esempi
+audio
+Sono stati rimossi degli esempi
+audio reali con trascrizioni 15/7/2026
+Riorganizzato per argomenti e
+importanza; sono state rimosse
+le linee guida per la forma
+scritta e lo stato di salvataggio,
+sono stati aggiunti nuovi tag
+(<nt> <sc>), è stato modificato il
+dizionario principale
+È stata rimossa la sezione sulla
+forma scritta
+È stata rimossa la sezione sullo
+stato di salvataggio: nessun Ignora
+Sono stati aggiunti nuovi tag <nt>
+<sc>
+È stato riorganizzato, riformattato e
+ridotto il testo
+Sono stati aggiunti degli esempi
+audio reali con trascrizioni
+È stata assegnata una priorità
+all'ordine in base alla gravità degli
+errori
+È stato aggiunto il modello mentale:
+importanza dell'accuratezza della
+trascrizione
+È stato spiegato perché le
+interiezioni, i riempitivi, ecc. sono
+importanti
+È stato modificato il dizionario
+principale passando a
+Merriam-Webster (American
+Heritage come secondario)
+15/7/2026
+Sono state aggiunte le strategie
+e la visualizzazione del
+diagramma di flusso delle
+convenzioni di trascrizione ed è
+stato riorganizzato per
+argomenti
+Sono state aggiunte le strategie e la
+visualizzazione del diagramma di
+flusso delle convenzioni di
+trascrizione ed è stato riorganizzato
+per argomenti
+8/7/2026
+Riorganizzato per argomenti
+Per ogni argomento, ora viene
+specificata la forma orale e quella
+scritta. Sono state eliminate alcune
+contraddizioni.
+1/7/2026
+Il tag {{}} in Discorso e
+grammatica non standard, sono
+stati eliminati piccoli errori in
+molte sezioni.
+Nuove istruzioni sulle parole
+pronunciate male, corretti alcuni
+errori nelle trascrizioni in forma
+scritta, formattato alcuni dati in
+tabelle e altro ancora.
+30/6/2026
+Posizionamento del tag [bg],
+Numeri composti troncati, Nomi
+utente, Pause nelle sequenze
+numeriche, Entità di catalogo e
+parole comuni, tag [ga] e
+[artifact], Formato orario,
+Scambio di battute interno alla
+sovrapposizione, Ordine degli
+interlocutori, Discorso
+incomprensibile
+Aggiunte nuove sezioni ed esempi
+alle trascrizioni nella forma scritta e
+parlata
+19/6/2026
+Utilizzo delle virgolette doppie,
+Soggettività della virgola, Due
+punti, Raggruppamento del
+codice di avviamento postale,
+Titoli onorifici, Punto
+interrogativo con "Sai",
+Ortografia delle varianti, Nomi
+utente, Formattazione dei
+centesimi
+Aggiunte nuove sezioni alle
+trascrizioni nella forma scritta 8/6/2026
+Formato dell'indirizzo, utilizzo
+della virgola, linee guida per la
+casella dei commenti
+Esempi
+Aggiunte nuove sezioni alle
+trascrizioni nella forma scritta
+Refusi corretti negli esempi
+2/6/2026
+Codice alfanumerico,
+Raggruppamenti numerici
+ambigui, Orario non standard,
+Misurazione, Formattazione dei
+numeri grandi
+Aggiunte nuove sezioni alle
+trascrizioni nella forma scritta 29/5/2026
+Valuta/simboli, formato orario,
+URL/e-mail, numeri di telefono,
+caratteri speciali, voce bassa
+Motivi per ignorare
+Aggiunte nuove sezioni alle
+trascrizioni nella forma scritta
+Chiarimento dei motivi per ignorare
+e dei tag
+27/5/2026
+Punteggiatura
+Trascrizioni nella forma scritta
+I punti interrogativi (?) non sono
+obbligatori. Non utilizzare i punti
+esclamativi (!) in nessuna
+trascrizione.
+Sono state aggiunte ulteriori linee
+guida e altri esempi alle trascrizioni
+nella forma scritta
+26/5/2026
+Turni dell'interlocutore Aggiunti chiarimenti sui turni
+dell'interlocutore 22/5/2026
+Motivi per ignorare Chiariti 7 motivi per ignorare 20/5/2026
+Discorso di origine multimediale
+L'uso dei tag
+Sconosciuto
+Sono stati rimossi i tag "discorso di
+origine multimediale" e le relative
+menzioni
+Aggiunti tag "sovrapposizione" alla
+tabella
+Aggiunta una nota per Sconosciuto
+18/5/2026
+Trascrizioni nella forma scritta Aggiunte tutte le trascrizioni nella
+forma scritta 15/5/2026
+Dizionario
+Contrazioni informali
+Interiezioni e riempitivi
+È stata aggiornata la procedura
+end-to-end
+L'American Heritage Dictionary è il
+riferimento principale. Utilizzare il
+Cambridge Dictionary solo per il
+vocabolario specifico dell'inglese
+britannico non presente
+nell'American Heritage.
+È stato chiarito che il dizionario è la
+verità di riferimento: qualsiasi parola
+trovata nell'American Heritage
+Dictionary è consentita così com'è
+nella trascrizione.
+Aggiunte le linee guida per le
+interiezioni e i riempitivi.
+12/5/2026
+Criteri Valido e Ignora
+Dizionari di lingue diverse da
+quella di destinazione
+Regole di punteggiatura
+Tabella delle posizioni dei tag
+Lingue immaginarie
+Corretti altri errori minori
+Risolto il conflitto con le regole della
+lingua diversa da quella di
+destinazione; sono state aggiunte
+linee guida per i discorsi di origine
+multimediale non identificabili.
+Sezione riscritta per chiarire la
+rimozione degli accenti, la gestione
+dei sistemi di scrittura non in
+caratteri latini e l'alternativa a
+Google
+È stato chiarito quali segni di
+punteggiatura omettere e quali
+mantenere (apostrofi e trattini
+consentiti)
+11/5/2026
+È stato riorganizzato in base alla
+posizione nel testo trascritto per una
+più facile consultazione
+Sostituito l'esempio derivato dal
+latino ("expecto patronum") con un
+esempio in lingua chiaramente
+immaginaria
+Sequenze alfanumeriche
+Interiezioni e riempitivi
+Pausa
+Creata una nuova sezione con
+esempi di sequenze alfanumeriche.
+Convertire i suoni Sì e No non
+verbali in interiezioni con regole
+diverse. Unire con i riempitivi.
+Rimuovere il tag Pausa.
+24/4/2026
+Più interlocutori
+Voce in sottofondo
+Sussurro e voce bassa, canto
+Suoni vocali non lessicali
+Madrelingua, genere
+Artefatti audio
+Creare <s1>, <s2> per identificare
+gli interlocutori.
+Limitare la voce di sottofondo a un
+discorso veramente accidentale e
+non attribuibile.
+Convertire in tag di apertura e
+chiusura.
+Dividere [laugh] e [cough] da [hn].
+Specificare la madrelingua e il
+genere di ogni interlocutore.
+Creare il tag.
+23/4/2026
+Suoni vocali non lessicali
+Formulazione chiarita su quando
+indicare la presenza di suoni vocali
+non lessicali.
+14/4/2025
+Troncamenti e autocorrezioni
+Riempitivi
+Suoni vocali non lessicali
+Quando c'è una parola
+estremamente troncata, inserisci
+solo un punto (.) nel campo della
+trascrizione.
+Quando c'è solo un riempitivo o solo
+un suono vocale non lessicale,
+inserisci solo il tag [fp] o [hn] nel
+campo della trascrizione.
+Questa è la guida preferita dal
+cliente per dare seguito alla
+soluzione alternativa fornita in
+precedenza.
+9/4/2025
+Troncamenti e autocorrezioni
+Riempitivi
+Suoni vocali non lessicali
+Quando è presente una parola
+estremamente troncata, solo un
+riempitivo o solo un suono vocale
+non lessicale, inserisci solo un punto
+(.) nel campo di trascrizione.
+Ciò è dovuto alle limitazioni degli
+strumenti che non consentono di
+lasciare vuoto il campo della
+trascrizione.
+8/4/2025
+Regole generali
+Più interlocutori
+Parole e frasi incomprensibili e
+ipotizzate
+Riempitivo
+Lingue diverse da quella di
+destinazione
+Sussurro, sussurro parziale e
+voce bassa
+Canto
+Mormorio
+Voce in sottofondo
+Suoni vocali non lessicali
+Suoni Sì e No non verbali
+Genere
+Stato di salvataggio
+Glossario
+Madrelingua
+Aggiornata la sezione Discorso in
+sottofondo (precedentemente nota
+come Discorso non diretto al
+dispositivo) per cambiare la
+nomenclatura da non diretto al
+dispositivo a in sottofondo e fornire
+indicazioni più specifiche su quando
+usare questo tag, dato che non ci
+sono wake word in questo flusso di
+lavoro.
+La nomenclatura "discorso rivolto al
+dispositivo/interlocutore" è stata
+aggiornata in "interlocutore
+principale" in tutte le convenzioni.
+3/4/2025
+Nessun discorso
+Madrelingua
+Stato di salvataggio
+Sono state aggiunte indicazioni
+dettagliate su quando usare il tag
+<ns>
+È stato rimosso l'esempio non
+applicabile
+È stato corretto il refuso nel
+diagramma di flusso Ignora
+1/4/2025
+Genere
+Rimosso "I discorsi dei media e
+quelli generati dal computer non
+contano ai fini di Più Interlocutori."
+17/3/2025
+Regole generali È stata aggiunta una nota che il tag
+<tts> non si applica a questo flusso 12/3/2025
+di lavoro. Trascrivi tutti gli enunciati
+degli agenti.
+Tutte Convenzioni pubblicate per un
+nuovo flusso di lavoro
+Click or tap here to enter text.

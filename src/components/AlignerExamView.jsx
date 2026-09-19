@@ -1,11 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ERMIS_INSTRUCTIONS } from '../data/ermisInstructions';
+import { ERMIS_INSTRUCTIONS_ITALIAN } from '../data/ermisInstructionsItalian';
 import { useTranscriber } from '../hooks/useTranscriber';
 
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
 
 export default function AlignerExamView({ onBack }) {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [translationText, setTranslationText] = useState('');
+  const [translatedText, setTranslatedText] = useState('');
+  const [translationDir, setTranslationDir] = useState('it2en');
+  const [isTranslating, setIsTranslating] = useState(false);
   const [file, setFile] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [result, setResult] = useState(null);
@@ -24,6 +30,52 @@ export default function AlignerExamView({ onBack }) {
       setFile(e.target.files[0]);
       setResult(null);
       setError(null);
+    }
+  };
+
+  const handleTranslate = async () => {
+    if (!translationText.trim()) return;
+    setIsTranslating(true);
+    setTranslatedText('');
+    setError(null);
+    try {
+      const promptText = translationDir === 'it2en' 
+        ? `Translate the following Italian text to English. Respond ONLY with the translation.\n\nText: ${translationText}`
+        : `Translate the following English text to Italian. Respond ONLY with the translation.\n\nText: ${translationText}`;
+        
+      const payload = {
+        contents: [
+          {
+            role: 'user',
+            parts: [{ text: promptText }]
+          }
+        ],
+        generationConfig: {
+          temperature: 0.3
+        }
+      };
+
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${API_KEY}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.error?.message || "Gemini API failed");
+      }
+
+      const responseData = await response.json();
+      const generatedText = responseData.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (generatedText) {
+        setTranslatedText(generatedText);
+      }
+    } catch (err) {
+      console.error(err);
+      setError(`Translation failed: ${err.message}`);
+    } finally {
+      setIsTranslating(false);
     }
   };
 
@@ -160,19 +212,26 @@ export default function AlignerExamView({ onBack }) {
 
       const audioInlineData = await getBase64(targetFile);
 
-        const payload = {
-        system_instruction: { parts: [{ text: "CRITICAL: YOU MUST FOLLOW EVERY SINGLE RULE IN THE ERMIS INSTRUCTIONS WITH 100% ACCURACY AND PRECISION. DO NOT MISS ANY SPECIAL SYMBOLS, SPEAKER TAGS (<s1>, <s2>), OR OVERLAPPING SPEECH (<ol>). " + ERMIS_INSTRUCTIONS }] },
-        contents: [
-          {
-            role: 'user',
-            parts: [
-              { text: `You MUST achieve 100% accuracy and precision. Capture EVERY SINGLE DETAIL in the audio. You must rigorously apply ALL rules in the Ermis instructions:
+        const instructions = selectedProject === 'Italian' ? ERMIS_INSTRUCTIONS_ITALIAN : ERMIS_INSTRUCTIONS;
+        const systemText = selectedProject === 'Italian' 
+          ? "CRITICAL: YOU MUST FOLLOW EVERY SINGLE RULE IN THE ERMIS ITALIAN INSTRUCTIONS WITH 100% ACCURACY AND PRECISION. " + instructions
+          : "CRITICAL: YOU MUST FOLLOW EVERY SINGLE RULE IN THE ERMIS INSTRUCTIONS WITH 100% ACCURACY AND PRECISION. DO NOT MISS ANY SPECIAL SYMBOLS, SPEAKER TAGS (<s1>, <s2>), OR OVERLAPPING SPEECH (<ol>). " + instructions;
+
+        const userText = `You MUST achieve 100% accuracy and precision. Capture EVERY SINGLE DETAIL in the audio. You must rigorously apply ALL rules in the Ermis instructions:
 1. NO COMMAS, FULL STOPS, EXCLAMATION MARKS, OR QUESTION MARKS. Strip all punctuation except hyphens/apostrophes as allowed.
 2. YOU MUST SPELL OUT SYMBOLS: Replace % with "percent", $ with "dollars", & with "and", € with "euros". Do NOT output the symbols themselves.
 3. IF THERE IS ONLY ONE SPEAKER IN THE ENTIRE AUDIO, DO NOT USE THE <s1> TAG AT ALL. Just output the text.
 4. Pay extreme attention to identifying multiple speakers using <s1> and <s2>, and properly tag overlapping speech with <ol>. 
 5. Do not miss any special symbols, filled pauses [fp], non-lexical vocal sounds [hn], [laughter], or background speech [bg]. 
-Transcribe the audio exactly as spoken, formatting strictly as the requested JSON structure without hallucinating.` },
+Transcribe the audio exactly as spoken, formatting strictly as the requested JSON structure without hallucinating. The output must be JSON with keys: spoken_form, written_form, save_state, discard_reasons (array), and speaker_metadata (array of objects with speaker, gender, nativity).`;
+
+        const payload = {
+        system_instruction: { parts: [{ text: systemText }] },
+        contents: [
+          {
+            role: 'user',
+            parts: [
+              { text: userText },
               { inline_data: { mime_type: audioInlineData.mimeType, data: audioInlineData.data } }
             ]
           }
@@ -209,11 +268,44 @@ Transcribe the audio exactly as spoken, formatting strictly as the requested JSO
     }
   };
 
+  if (!selectedProject) {
+    return (
+      <div className="container" style={{ maxWidth: '800px' }}>
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl text-primary">Aligner Exam Tool (Ermis)</h2>
+          <button onClick={onBack} className="text-sm bg-secondary">Back to Menu</button>
+        </div>
+        <div className="flex flex-col gap-6 p-8 bg-dark rounded border border-gray-700 text-center">
+          <h3 className="text-xl text-white mb-4">Select Project</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button 
+              onClick={() => setSelectedProject('English')}
+              className="p-8 border border-indigo-500/30 hover:border-indigo-500 hover:bg-indigo-500/10 rounded-xl transition-all"
+            >
+              <h4 className="text-xl font-bold text-indigo-400 mb-2">Ermis English</h4>
+              <p className="text-sm text-gray-400">English transcription guidelines</p>
+            </button>
+            <button 
+              onClick={() => setSelectedProject('Italian')}
+              className="p-8 border border-emerald-500/30 hover:border-emerald-500 hover:bg-emerald-500/10 rounded-xl transition-all"
+            >
+              <h4 className="text-xl font-bold text-emerald-400 mb-2">Ermis Italian</h4>
+              <p className="text-sm text-gray-400">Italian transcription guidelines</p>
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="container" style={{ maxWidth: '800px' }}>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl text-primary">Aligner Exam Tool (Ermis)</h2>
-        <button onClick={onBack} className="text-sm bg-secondary">Back to Menu</button>
+        <h2 className="text-2xl text-primary">Aligner Exam Tool ({selectedProject})</h2>
+        <div>
+          <button onClick={() => setSelectedProject(null)} className="text-sm bg-secondary mr-2">Change Project</button>
+          <button onClick={onBack} className="text-sm bg-secondary">Back to Menu</button>
+        </div>
       </div>
 
       <div className="mb-6 p-4 rounded bg-dark border border-gray-700">
@@ -348,6 +440,50 @@ Transcribe the audio exactly as spoken, formatting strictly as the requested JSO
                   ))}
                 </tbody>
               </table>
+            </div>
+          )}
+        </div>
+      )}
+
+      {selectedProject === 'Italian' && (
+        <div className="mt-8 p-6 bg-dark rounded border border-emerald-700/50">
+          <div className="flex justify-between items-center mb-2">
+            <h3 className="text-xl text-emerald-400">Team Communicator</h3>
+            <select 
+              value={translationDir}
+              onChange={(e) => {
+                setTranslationDir(e.target.value);
+                setTranslatedText('');
+              }}
+              className="bg-zinc-800 border border-gray-700 text-sm text-gray-300 rounded px-2 py-1 focus:outline-none focus:border-emerald-500"
+            >
+              <option value="it2en">Italian -&gt; English</option>
+              <option value="en2it">English -&gt; Italian</option>
+            </select>
+          </div>
+          <p className="text-sm text-gray-400 mb-4">Translate text for seamless team communication.</p>
+          <textarea 
+            className="w-full bg-zinc-900 border border-gray-700 rounded p-3 text-white focus:outline-none focus:border-emerald-500 mb-4"
+            rows={4}
+            placeholder={translationDir === 'it2en' ? "Scrivi qui in italiano..." : "Type here in English..."}
+            value={translationText}
+            onChange={(e) => setTranslationText(e.target.value)}
+          ></textarea>
+          <button 
+            onClick={handleTranslate} 
+            disabled={isTranslating || !translationText.trim()}
+            style={{ padding: '8px 16px', backgroundColor: (isTranslating || !translationText.trim()) ? '#555' : '#10b981', color: '#fff' }}
+            className={`rounded ${isTranslating ? "pulse" : ""}`}
+          >
+            {isTranslating ? 'Translating...' : (translationDir === 'it2en' ? 'Translate to English' : 'Translate to Italian')}
+          </button>
+          
+          {translatedText && (
+            <div className="mt-4 p-4 bg-zinc-800 rounded border border-gray-700">
+              <h4 className="text-xs text-gray-500 uppercase tracking-wider mb-2">
+                {translationDir === 'it2en' ? 'English Translation' : 'Italian Translation'}
+              </h4>
+              <p className="text-white">{translatedText}</p>
             </div>
           )}
         </div>

@@ -125,8 +125,94 @@ export default function AlignerExamView({ onBack }) {
   const processAudio = async (targetFile) => {
     if (modelEngine === 'v1') {
       return processAudioV1(targetFile);
+    } else if (modelEngine === 'v3') {
+      return processAudioV3(targetFile);
     } else {
       return processAudioV2(targetFile);
+    }
+  };
+
+  const processAudioV3 = async (targetFile) => {
+    if (!targetFile) return;
+    
+    setIsProcessing(true);
+    setError(null);
+    setResult(null);
+
+    try {
+      if (!GROQ_API_KEY) {
+        throw new Error("Groq API Key is missing. Please add VITE_GROQ_API_KEY to your .env file.");
+      }
+
+      // Step 1: Transcribe audio using Groq Whisper (whisper-large-v3)
+      const formData = new FormData();
+      formData.append("file", targetFile);
+      formData.append("model", "whisper-large-v3");
+      formData.append("response_format", "json");
+
+      const whisperRes = await fetch("https://api.groq.com/openai/v1/audio/transcriptions", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${GROQ_API_KEY}`
+        },
+        body: formData
+      });
+
+      if (!whisperRes.ok) {
+        const errData = await whisperRes.json();
+        throw new Error(errData.error?.message || "Groq Whisper API failed");
+      }
+
+      const whisperData = await whisperRes.json();
+      const transcript = whisperData.text;
+
+      // Step 2: Process transcript with Groq Llama 3 to format it according to Ermis rules
+      const instructions = selectedProject === 'Italian' ? ERMIS_INSTRUCTIONS_ITALIAN : ERMIS_INSTRUCTIONS;
+      const systemText = selectedProject === 'Italian' 
+        ? "CRITICAL: YOU MUST FOLLOW EVERY SINGLE RULE IN THE ERMIS ITALIAN INSTRUCTIONS WITH 100% ACCURACY AND PRECISION. " + instructions
+        : "CRITICAL: YOU MUST FOLLOW EVERY SINGLE RULE IN THE ERMIS INSTRUCTIONS WITH 100% ACCURACY AND PRECISION. DO NOT MISS ANY SPECIAL SYMBOLS, SPEAKER TAGS (<s1>, <s2>), OR OVERLAPPING SPEECH (<ol>). " + instructions;
+
+      const userText = `You MUST achieve 100% accuracy and precision. Here is the raw transcript: "${transcript}". Format it and output JSON. You must rigorously apply ALL rules in the Ermis instructions:
+1. NO COMMAS, FULL STOPS, EXCLAMATION MARKS, OR QUESTION MARKS. Strip all punctuation except hyphens/apostrophes as allowed.
+2. YOU MUST SPELL OUT SYMBOLS: Replace % with "percent", $ with "dollars", & with "and", € with "euros". Do NOT output the symbols themselves.
+3. IF THERE IS ONLY ONE SPEAKER IN THE ENTIRE AUDIO, DO NOT USE THE <s1> TAG AT ALL. Just output the text.
+4. Pay extreme attention to identifying multiple speakers using <s1> and <s2>, and properly tag overlapping speech with <ol>. 
+5. Do not miss any special symbols, filled pauses [fp], non-lexical vocal sounds [hn], [laughter], or background speech [bg]. 
+Transcribe the audio exactly as spoken, formatting strictly as the requested JSON structure without hallucinating. The output must be JSON with keys: spoken_form, written_form, save_state, discard_reasons (array), and speaker_metadata (array of objects with speaker, gender, nativity). Return ONLY valid JSON, no markdown formatting.`;
+
+      const llamaRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${GROQ_API_KEY}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "llama3-70b-8192",
+          messages: [
+            { role: "system", content: systemText },
+            { role: "user", content: userText }
+          ],
+          temperature: 0,
+          response_format: { type: "json_object" }
+        })
+      });
+
+      if (!llamaRes.ok) {
+         const errData = await llamaRes.json();
+         throw new Error(errData.error?.message || "Groq LLM API failed");
+      }
+
+      const llamaData = await llamaRes.json();
+      const generatedText = llamaData.choices[0].message.content;
+      
+      const parsedResult = JSON.parse(generatedText);
+      setResult(parsedResult);
+
+    } catch (err) {
+      console.error(err);
+      setError(`V3 Processing failed: ${err.message}`);
+    } finally {
+      setIsProcessing(false);
     }
   };
 
@@ -322,6 +408,12 @@ Transcribe the audio exactly as spoken, formatting strictly as the requested JSO
           >
             V2: TensorFlow Web (100% Free)
           </button>
+          <button 
+            onClick={() => setModelEngine('v3')}
+            style={{ padding: '8px 16px', borderRadius: '4px', backgroundColor: modelEngine === 'v3' ? '#f59e0b' : '#333', color: '#fff', border: '1px solid #f59e0b' }}
+          >
+            V3: Groq Cloud (Fast & Free)
+          </button>
         </div>
 
         {modelEngine === 'v2' && transcriber.isBusy && (
@@ -374,7 +466,7 @@ Transcribe the audio exactly as spoken, formatting strictly as the requested JSO
             style={{ padding: '10px 24px', backgroundColor: (isProcessing || isRecording) ? '#555' : (modelEngine === 'v1' ? '#10b981' : '#8b5cf6'), color: '#fff' }}
             className={isProcessing ? "pulse" : ""}
           >
-            {isProcessing ? `Analyzing Audio with ${modelEngine === 'v1' ? 'Gemini' : 'Local Model'}...` : `Process Audio (${modelEngine === 'v1' ? 'V1' : 'V2'})`}
+            {isProcessing ? `Analyzing Audio with ${modelEngine === 'v1' ? 'Gemini' : modelEngine === 'v2' ? 'Local Model' : 'Groq'}...` : `Process Audio (${modelEngine === 'v1' ? 'V1' : modelEngine === 'v2' ? 'V2' : 'V3'})`}
           </button>
         </div>
         

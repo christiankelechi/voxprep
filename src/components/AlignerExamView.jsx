@@ -187,7 +187,7 @@ Transcribe the audio exactly as spoken, formatting strictly as the requested JSO
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "llama3-70b-8192",
+          model: "llama-3.1-70b-versatile",
           messages: [
             { role: "system", content: systemText },
             { role: "user", content: userText }

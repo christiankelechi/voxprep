@@ -5,6 +5,7 @@ import { useTranscriber } from '../hooks/useTranscriber';
 
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
+const OPENROUTER_API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY;
 
 export default function AlignerExamView({ onBack }) {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -180,14 +181,18 @@ export default function AlignerExamView({ onBack }) {
 5. Do not miss any special symbols, filled pauses [fp], non-lexical vocal sounds [hn], [laughter], or background speech [bg]. 
 Transcribe the audio exactly as spoken, formatting strictly as the requested JSON structure without hallucinating. The output must be JSON with keys: spoken_form, written_form, save_state, discard_reasons (array), and speaker_metadata (array of objects with speaker, gender, nativity). Return ONLY valid JSON, no markdown formatting.`;
 
-      const llamaRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      if (!OPENROUTER_API_KEY) {
+        throw new Error("OpenRouter API Key is missing. Please add VITE_OPENROUTER_API_KEY to your .env file.");
+      }
+
+      const llamaRes = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${GROQ_API_KEY}`,
+          "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
+          model: "meta-llama/llama-3.1-8b-instruct:free",
           messages: [
             { role: "system", content: systemText },
             { role: "user", content: userText }
@@ -199,7 +204,7 @@ Transcribe the audio exactly as spoken, formatting strictly as the requested JSO
 
       if (!llamaRes.ok) {
          const errData = await llamaRes.json();
-         throw new Error(errData.error?.message || "Groq LLM API failed");
+         throw new Error(errData.error?.message || "OpenRouter LLM API failed");
       }
 
       const llamaData = await llamaRes.json();
@@ -412,7 +417,7 @@ Transcribe the audio exactly as spoken, formatting strictly as the requested JSO
             onClick={() => setModelEngine('v3')}
             style={{ padding: '8px 16px', borderRadius: '4px', backgroundColor: modelEngine === 'v3' ? '#f59e0b' : '#333', color: '#fff', border: '1px solid #f59e0b' }}
           >
-            V3: Groq Cloud (Fast & Free)
+            V3: OpenRouter (Free)
           </button>
         </div>
 
@@ -466,7 +471,7 @@ Transcribe the audio exactly as spoken, formatting strictly as the requested JSO
             style={{ padding: '10px 24px', backgroundColor: (isProcessing || isRecording) ? '#555' : (modelEngine === 'v1' ? '#10b981' : '#8b5cf6'), color: '#fff' }}
             className={isProcessing ? "pulse" : ""}
           >
-            {isProcessing ? `Analyzing Audio with ${modelEngine === 'v1' ? 'Gemini' : modelEngine === 'v2' ? 'Local Model' : 'Groq'}...` : `Process Audio (${modelEngine === 'v1' ? 'V1' : modelEngine === 'v2' ? 'V2' : 'V3'})`}
+            {isProcessing ? `Analyzing Audio with ${modelEngine === 'v1' ? 'Gemini' : modelEngine === 'v2' ? 'Local Model' : 'OpenRouter'}...` : `Process Audio (${modelEngine === 'v1' ? 'V1' : modelEngine === 'v2' ? 'V2' : 'V3'})`}
           </button>
         </div>
         
